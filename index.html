@@ -11,182 +11,80 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
-<title>BETMAX · Sakura vs Ruby</title>
+<title>BETMAX</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap');
 :root {
-  --green-dark:  #0c1f13;
-  --green-surf:  #1a3828;
-  --yellow:      #f5c518;
-  --white:       #ffffff;
-  --white-dim:   #aaaaaa;
-  --grey:        #7a8a80;
-  --border:      #274035;
-  --red:         #d93030;
-  --red-bright:  #ff2a2a;
-  --blue:        #5aa8cc;
-  --green-gain:  #3dffa0;
-  --clay-out:    #9c3a1c;
+  --bg:#0c1f13; --bg-dark:#080f0a; --border:#274035;
+  --yellow:#f5c518; --white:#fff; --dim:#b9c4bd; --grey:#7a8a80; --red:#d93030; --odd:#1d3d28;
 }
-
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-html { height:100%; height:-webkit-fill-available; background:var(--green-dark); }
+html { height:100%; background:var(--bg); }
 body {
-  height:100vh; height:-webkit-fill-available; height:100dvh;
-  background:var(--green-dark); color:var(--white);
-  font-family:'Roboto',sans-serif;
-  max-width:430px; margin:0 auto;
-  overflow:hidden; display:flex; flex-direction:column;
-  overscroll-behavior:none;
+  height:100vh; height:100dvh; max-width:430px; margin:0 auto; overflow:hidden;
+  display:flex; flex-direction:column; background:var(--bg); color:var(--white);
+  font-family:'Roboto',sans-serif; overscroll-behavior:none;
   -webkit-user-select:none; user-select:none; -webkit-touch-callout:none;
 }
-.cond { font-family:'Roboto Condensed',sans-serif; }
+a { color:inherit; text-decoration:none; }
 
-/* ── HEADER ── */
-.app-header { background:#080f0a; padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); flex-shrink:0; }
+/* HEADER */
+.app-header { background:var(--bg-dark); padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); flex-shrink:0; }
 .logo { font-family:'Roboto Condensed',sans-serif; font-weight:900; font-size:30px; line-height:1; color:var(--yellow); letter-spacing:0.02em; }
-.logo span { color:var(--white); }
-.live-pill { display:flex; align-items:center; gap:8px; background:var(--red); padding:7px 13px; border-radius:5px; font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:900; letter-spacing:0.08em; line-height:1; box-shadow:0 0 0 0 rgba(217,48,48,0.6); animation:livePulse 1.6s infinite; }
-.live-dot { width:10px; height:10px; background:#fff; border-radius:50%; animation:blink 1s infinite; }
+.logo span { color:#fff; }
+.hdr-right { display:flex; align-items:center; gap:10px; }
+.hdr-btn { width:36px; height:36px; border-radius:50%; background:#13261a; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; }
+
+/* DEPORTES */
+.sports { display:flex; gap:6px; padding:10px 10px; overflow-x:auto; flex-shrink:0; background:var(--bg-dark); border-bottom:1px solid var(--border); scrollbar-width:none; }
+.sports::-webkit-scrollbar { display:none; }
+.sport { flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:3px; min-width:62px; padding:6px 4px 5px; border-radius:10px; color:var(--dim); font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:700; }
+.sport .ic { font-size:22px; line-height:1; }
+.sport .ct { font-size:10px; color:var(--grey); font-weight:400; }
+.sport.on { background:rgba(245,197,24,0.12); color:var(--yellow); box-shadow:inset 0 0 0 1px rgba(245,197,24,0.4); }
+
+/* TÍTULO */
+.live-title { display:flex; align-items:center; justify-content:space-between; padding:12px 14px 9px; flex-shrink:0; }
+.live-title h1 { font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:900; display:flex; align-items:center; gap:9px; }
+.live-pill { display:inline-flex; align-items:center; gap:6px; background:var(--red); padding:5px 10px; border-radius:4px; font-size:13px; font-weight:900; letter-spacing:0.08em; font-family:'Roboto Condensed',sans-serif; }
+.live-dot { width:8px; height:8px; background:#fff; border-radius:50%; animation:blink 1s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-@keyframes livePulse { 0%{box-shadow:0 0 0 0 rgba(217,48,48,0.55)} 70%{box-shadow:0 0 0 9px rgba(217,48,48,0)} 100%{box-shadow:0 0 0 0 rgba(217,48,48,0)} }
+.live-title .count { color:var(--grey); font-size:13px; }
 
-/* ── BET CARD (compacta, legible de un vistazo) ── */
-.bet-card { position:relative; margin:16px 12px 10px; background:linear-gradient(135deg,#0a1f12 0%,#163020 100%); border:2px solid var(--yellow); border-radius:12px; padding:16px 14px 10px; flex-shrink:0; }
-.bc-tag { position:absolute; top:-11px; left:12px; background:var(--yellow); color:#000; font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:900; letter-spacing:0.08em; padding:3px 9px; border-radius:4px; line-height:1.1; }
-.bc-pick { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-.bc-pick-flag { width:36px; height:24px; border-radius:3px; flex-shrink:0; box-shadow:0 0 0 1px rgba(255,255,255,0.15); display:block; }
-.bc-pick-main { flex:1; min-width:0; }
-.bc-pick-name { font-family:'Roboto Condensed',sans-serif; font-size:23px; font-weight:900; line-height:1.05; color:var(--white); }
-.bc-pick-market { font-family:'Roboto Condensed',sans-serif; font-size:15px; font-weight:700; color:var(--yellow); line-height:1.2; }
-.bc-odd { text-align:center; background:rgba(245,197,24,0.13); border:1px solid rgba(245,197,24,0.45); border-radius:6px; padding:4px 9px; flex-shrink:0; }
-.bc-odd-lbl { font-size:9px; letter-spacing:0.1em; color:var(--yellow); font-weight:700; text-transform:uppercase; }
-.bc-odd-val { font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:900; color:var(--yellow); line-height:1; }
-.bc-amounts { display:grid; grid-template-columns:1fr auto 1fr; align-items:end; background:rgba(0,0,0,0.35); border-radius:8px; padding:8px 14px 9px; }
-.bc-col-label { white-space:nowrap; font-size:11px; color:#b9c4bd; letter-spacing:0.03em; text-transform:uppercase; font-weight:700; margin-bottom:2px; }
-.bc-col.right { text-align:right; }
-.bc-col-value { font-family:'Roboto Condensed',sans-serif; font-size:44px; font-weight:900; line-height:1; }
-.bc-col-value.stake { color:var(--white); }
-.bc-col-value.gain  { color:var(--green-gain); }
-.bc-arrow { font-size:24px; color:var(--yellow); opacity:0.6; padding:0 8px 8px; }
+/* LISTA */
+.list { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+.comp { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:8px 14px 7px; background:#0f2417; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.comp-name { font-family:'Roboto Condensed',sans-serif; font-size:14px; font-weight:700; color:var(--dim); }
+.comp-cols { display:flex; gap:6px; font-size:11px; color:var(--grey); font-family:'Roboto Condensed',sans-serif; }
+.comp-cols span { width:52px; text-align:center; }
 
-/* ── FRANJA BANDERAS (igual que v8, nombres completos) ── */
-.game-live-bar { background:#080f0a; border-bottom:1px solid rgba(245,197,24,0.25); padding:8px 12px 6px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; gap:8px; }
-.glb-side { display:flex; align-items:center; gap:7px; flex:1; min-width:0; }
-.glb-side.right { flex-direction:row-reverse; }
-.glb-flag-wrap { display:flex; flex-direction:column; align-items:center; gap:2px; }
-.glb-country { font-size:9px; color:var(--grey); letter-spacing:0.06em; text-transform:uppercase; font-weight:700; }
-.glb-info { display:flex; flex-direction:column; min-width:0; }
-.glb-info.right { align-items:flex-end; text-align:right; }
-.glb-name { font-family:'Roboto Condensed',sans-serif; font-size:15px; font-weight:700; color:var(--white); line-height:1.1; }
-.glb-dot { width:6px; height:6px; border-radius:50%; margin-top:3px; opacity:0; transition:opacity 0.3s; }
-.glb-dot.on { opacity:1; }
-.glb-center { display:flex; flex-direction:column; align-items:center; gap:2px; flex-shrink:0; }
-.glb-scores { display:flex; align-items:center; gap:6px; }
-.glb-score { font-family:'Roboto Condensed',sans-serif; font-size:30px; font-weight:900; line-height:1; min-width:40px; text-align:center; }
-.glb-score.s { color:var(--yellow); }
-.glb-score.r { color:var(--blue); }
-.glb-score.pop { animation:scorePop 0.28s ease; }
-@keyframes scorePop { 0%{transform:scale(1.4)} 100%{transform:scale(1)} }
-.glb-sep { font-family:'Roboto Condensed',sans-serif; font-size:22px; color:var(--border); }
-.glb-sub { font-size:9px; color:var(--grey); letter-spacing:0.07em; text-transform:uppercase; }
+.ev { display:flex; align-items:center; gap:8px; padding:10px 12px 10px 14px; border-bottom:1px solid var(--border); position:relative; }
+.ev:active { background:#143021; }
+.ev-main { flex:1; min-width:0; }
+.ev-time { font-family:'Roboto Condensed',sans-serif; font-size:12px; color:#ff7070; font-weight:700; margin-bottom:4px; display:flex; align-items:center; gap:7px; }
+.min-badge { background:var(--red); color:#fff; padding:1px 6px; border-radius:3px; animation:pulse 1.4s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.55} }
+.ev-row { display:flex; align-items:center; gap:5px; font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:700; line-height:1.4; }
+.ev-row .nm { flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.ev-row .sc { min-width:15px; text-align:center; color:var(--yellow); font-weight:900; }
+.ev-row .sc.g { color:var(--white); }
+.srv { width:6px; height:6px; border-radius:50%; background:var(--yellow); flex-shrink:0; }
+.srv.off { background:transparent; }
+.flag { width:18px; height:12px; border-radius:2px; flex-shrink:0; display:block; }
+.ev-odds { display:flex; gap:6px; flex-shrink:0; }
+.odd { width:52px; height:44px; border-radius:6px; background:var(--odd); display:flex; align-items:center; justify-content:center; font-family:'Roboto Condensed',sans-serif; font-size:15px; font-weight:700; color:var(--yellow); }
+.ev.hot { background:linear-gradient(90deg, rgba(245,197,24,0.09), rgba(245,197,24,0)); }
+.ev.hot::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--yellow); }
 
-/* ── MAPA (2D, arcilla) ── */
-.map-center { position:relative; flex:1; min-height:150px; overflow:hidden; background:var(--clay-out); }
-#court-svg { position:absolute; inset:0; width:100%; height:100%; display:block; }
-
-/* Paneles de puntuación — idénticos a v8 */
-.map-score-overlay { position:absolute; inset:0; pointer-events:none; z-index:10; overflow:hidden; }
-.map-panel-left {
-  position:absolute; top:0; left:0; bottom:0; width:50%;
-  background:linear-gradient(90deg, rgba(180,40,0,0.82) 0%, rgba(200,60,0,0.65) 100%);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
-  transform:translateX(-100%); transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
-}
-.map-panel-left.show { transform:translateX(0); }
-.map-panel-right {
-  position:absolute; top:0; right:0; bottom:0; width:50%;
-  background:linear-gradient(270deg, rgba(60,30,160,0.82) 0%, rgba(80,50,180,0.65) 100%);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
-  transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
-}
-.map-panel-right.show { transform:translateX(0); }
-.map-big-score { font-family:'Roboto Condensed',sans-serif; font-size:72px; font-weight:900; color:var(--yellow); line-height:1; text-shadow:0 2px 16px rgba(0,0,0,0.9); }
-.map-big-score.word { font-size:50px; }
-.map-player-name { font-family:'Roboto Condensed',sans-serif; font-size:15px; font-weight:700; color:rgba(255,255,255,0.95); text-shadow:0 1px 6px rgba(0,0,0,0.95); letter-spacing:0.03em; text-align:center; padding:0 8px; }
-
-/* Franja de estado — ahora FUERA del mapa, no lo tapa */
-.map-status { flex-shrink:0; display:flex; align-items:center; justify-content:center; gap:8px; background:#080f0a; padding:7px 12px; border-bottom:1px solid var(--border); font-family:'Roboto Condensed',sans-serif; font-size:14px; color:#d6ddd8; min-height:32px; }
-.map-status-bar { width:3px; height:16px; border-radius:2px; background:var(--yellow); flex-shrink:0; }
-.map-status b { font-weight:700; color:#fff; }
-.map-status.hl { color:var(--yellow); }
-.map-status.hl b { color:var(--yellow); }
-
-/* ── STATS ── */
-.stats-bottom { flex-shrink:0; }
-/* Solo el margen justo para la barrita de inicio del iPhone, sin hueco vacío */
-.stats-bottom .stats-content { padding-bottom:max(10px, calc(env(safe-area-inset-bottom,0px) - 12px)); }
-.stats-tabs { display:flex; background:#080f0a; border-bottom:1px solid var(--border); }
-.stats-tab { flex:1; padding:9px 0; font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--grey); background:none; border:none; border-bottom:2px solid transparent; cursor:pointer; transition:all 0.2s; }
-.stats-tab.active { color:var(--yellow); border-bottom-color:var(--yellow); }
-.stats-content { padding:8px 14px 10px; }
-.stat-sets-header { display:flex; justify-content:flex-end; gap:0; font-size:10px; color:var(--grey); margin-bottom:2px; }
-.stat-sets-header span { min-width:44px; text-align:center; }
-.stat-player-row { display:flex; align-items:center; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--border); }
-.stat-player-lbl { font-family:'Roboto Condensed',sans-serif; font-size:15px; font-weight:700; display:flex; align-items:center; gap:8px; }
-.stat-player-lbl-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
-.mini-flag { width:20px; height:13px; border-radius:2px; display:block; flex-shrink:0; }
-.stat-sets { display:flex; }
-.stat-set-val { font-family:'Roboto Condensed',sans-serif; font-size:17px; font-weight:900; min-width:44px; text-align:center; }
-.stat-set-val.hl { color:var(--yellow); }
-.stat-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; margin-top:8px; }
-.stat-cell { text-align:center; padding:6px 4px; border-right:1px solid var(--border); }
-.stat-cell:last-child { border-right:none; }
-.stat-cell-val { font-family:'Roboto Condensed',sans-serif; font-size:17px; font-weight:900; color:var(--yellow); }
-.stat-cell-val.r { color:var(--blue); }
-.stat-cell-lbl { font-size:9px; color:var(--grey); margin-top:2px; }
-.stat-bar-row { display:flex; height:2px; background:var(--border); margin-top:3px; }
-.stat-bar-s { height:100%; background:var(--yellow); }
-.stat-bar-r { height:100%; background:var(--blue); margin-left:auto; }
-.stat-line { display:flex; align-items:center; padding:6px 0; border-bottom:1px solid var(--border); }
-.stat-line:last-child { border-bottom:none; }
-.stat-line-lbl { flex:1; font-size:12px; color:var(--grey); }
-.stat-line-v { font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:900; min-width:64px; text-align:right; }
-
-/* ── PANTALLA FINAL — APUESTA PERDIDA ── */
-.result-overlay { display:none; position:fixed; inset:0; z-index:500; background:radial-gradient(ellipse at 50% 30%, #3a0808 0%, #120303 55%, #050101 100%); flex-direction:column; align-items:center; justify-content:center; padding:calc(env(safe-area-inset-top,0px) + 20px) 20px calc(env(safe-area-inset-bottom,0px) + 20px); }
-.result-overlay.active { display:flex; animation:fadeIn 0.35s ease both; }
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
-.result-inner { width:100%; max-width:390px; text-align:center; }
-.result-icon { width:76px; height:76px; margin:0 auto 14px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; box-shadow:0 0 40px rgba(255,40,40,0.55); animation:pop 0.45s cubic-bezier(0.2,1.6,0.4,1) both; }
-@keyframes pop { from{transform:scale(0)} to{transform:scale(1)} }
-.result-title { font-family:'Roboto Condensed',sans-serif; font-size:40px; font-weight:900; letter-spacing:0.02em; color:#fff; line-height:1; margin-bottom:22px; }
-.result-amount { font-family:'Roboto Condensed',sans-serif; font-size:104px; font-weight:900; color:var(--red-bright); line-height:0.95; text-shadow:0 0 30px rgba(255,30,30,0.45); animation:shake 0.6s ease 0.35s both; }
-@keyframes shake { 0%,100%{transform:translateX(0)} 15%{transform:translateX(-12px)} 30%{transform:translateX(12px)} 45%{transform:translateX(-8px)} 60%{transform:translateX(8px)} 80%{transform:translateX(-4px)} }
-.result-amount-lbl { font-size:13px; color:#ff8080; margin-top:8px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; }
-.result-ticket { margin-top:26px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:12px; text-align:left; overflow:hidden; }
-.rt-row { display:flex; align-items:center; gap:12px; padding:12px 14px; }
-.rt-row + .rt-row { border-top:1px solid rgba(255,255,255,0.10); }
-.rt-flag { width:32px; height:21px; border-radius:3px; flex-shrink:0; display:block; }
-.rt-main { flex:1; min-width:0; }
-.rt-lbl { font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#9aa29d; font-weight:700; margin-bottom:2px; }
-.rt-text { font-family:'Roboto Condensed',sans-serif; font-size:19px; font-weight:700; color:#fff; line-height:1.15; }
-.rt-text.lost { color:#c9c9c9; text-decoration:line-through; text-decoration-color:var(--red-bright); text-decoration-thickness:2px; }
-.rt-badge { font-family:'Roboto Condensed',sans-serif; font-size:13px; font-weight:900; letter-spacing:0.06em; padding:4px 8px; border-radius:4px; flex-shrink:0; }
-.rt-badge.lost { background:var(--red); color:#fff; }
-.rt-badge.win  { background:var(--blue); color:#fff; }
-.rt-money { display:flex; justify-content:space-between; align-items:baseline; padding:12px 14px; border-top:1px solid rgba(255,255,255,0.10); font-family:'Roboto Condensed',sans-serif; }
-.rt-money-lbl { font-size:13px; color:#9aa29d; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; }
-.rt-money-val { font-size:22px; font-weight:900; }
-.rt-money-val s { color:#7d857f; text-decoration-color:var(--red-bright); text-decoration-thickness:2px; margin-right:8px; font-size:18px; }
-.rt-money-val b { color:#fff; }
-.result-btn { margin-top:22px; padding:12px 40px; background:transparent; border:1px solid rgba(255,255,255,0.25); border-radius:6px; color:#cfcfcf; font-family:'Roboto Condensed',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.05em; cursor:pointer; }
+/* NAV */
+.nav { flex-shrink:0; display:flex; background:var(--bg-dark); border-top:1px solid var(--border); padding:7px 0 max(7px, calc(env(safe-area-inset-bottom,0px) - 14px)); }
+.nav a { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; color:var(--grey); font-family:'Roboto Condensed',sans-serif; font-size:11px; font-weight:700; }
+.nav a.on { color:var(--yellow); }
+.nav svg { width:24px; height:24px; }
 </style>
 </head>
 <body>
 
-<!-- Banderas reutilizables -->
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <symbol id="flag-jp" viewBox="0 0 900 600"><rect fill="#fff" width="900" height="600"/><circle fill="#bc002d" cx="450" cy="300" r="180"/></symbol>
@@ -194,474 +92,141 @@ body {
   </defs>
 </svg>
 
-<!-- HEADER -->
 <div class="app-header">
   <div class="logo">BET<span>MAX</span></div>
-  <div class="live-pill"><span class="live-dot"></span>EN DIRECTO</div>
-</div>
-
-<!-- BET CARD -->
-<div class="bet-card">
-  <div class="bc-tag">🎾 APUESTA ACTIVA</div>
-  <div class="bc-pick">
-    <svg class="bc-pick-flag" viewBox="0 0 900 600"><use href="#flag-jp"/></svg>
-    <div class="bc-pick-main">
-      <div class="bc-pick-name">Sakura Watanabe</div>
-      <div class="bc-pick-market">gana este juego</div>
-    </div>
-    <div class="bc-odd">
-      <div class="bc-odd-lbl">Cuota</div>
-      <div class="bc-odd-val">1.50</div>
-    </div>
-  </div>
-  <div class="bc-amounts">
-    <div class="bc-col">
-      <div class="bc-col-label">Apostado</div>
-      <div class="bc-col-value stake">140 €</div>
-    </div>
-    <div class="bc-arrow">→</div>
-    <div class="bc-col right">
-      <div class="bc-col-label">Ganancia potencial</div>
-      <div class="bc-col-value gain">210 €</div>
-    </div>
+  <div class="hdr-right">
+    <div class="hdr-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b9c4bd" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div>
+    <div class="hdr-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b9c4bd" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
   </div>
 </div>
 
-<!-- FRANJA BANDERAS -->
-<div class="game-live-bar">
-  <div class="glb-side">
-    <div class="glb-flag-wrap">
-      <svg width="38" height="26" viewBox="0 0 900 600" style="border-radius:2px;display:block"><use href="#flag-jp"/></svg>
-      <div class="glb-country">JAP</div>
-    </div>
-    <div class="glb-info">
-      <div class="glb-name">Sakura<br>Watanabe</div>
-      <div class="glb-dot" id="dot-s" style="background:var(--yellow)"></div>
-    </div>
+<div class="sports">
+  <div class="sport on"><span class="ic">🔴</span>Directo<span class="ct">64</span></div>
+  <div class="sport"><span class="ic">⚽</span>Fútbol<span class="ct">23</span></div>
+  <div class="sport"><span class="ic">🎾</span>Tenis<span class="ct">18</span></div>
+  <div class="sport"><span class="ic">🏀</span>Baloncesto<span class="ct">9</span></div>
+  <div class="sport"><span class="ic">🏐</span>Voleibol<span class="ct">5</span></div>
+  <div class="sport"><span class="ic">🤾</span>Balonmano<span class="ct">4</span></div>
+  <div class="sport"><span class="ic">🎮</span>eSports<span class="ct">5</span></div>
+</div>
+
+<div class="live-title">
+  <h1><span class="live-pill"><span class="live-dot"></span>EN DIRECTO</span>Eventos</h1>
+  <span class="count">64 eventos</span>
+</div>
+
+<div class="list">
+
+  <!-- FÚTBOL -->
+  <div class="comp">
+    <div class="comp-name">⚽ Copa del Rey</div>
+    <div class="comp-cols"><span>1</span><span>X</span><span>2</span></div>
   </div>
-  <div class="glb-center">
-    <div class="glb-scores">
-      <div class="glb-score s" id="glb-s">0</div>
-      <div class="glb-sep">·</div>
-      <div class="glb-score r" id="glb-r">0</div>
+  <a class="ev hot" href="getafe.html">
+    <div class="ev-main">
+      <div class="ev-time"><span class="min-badge">90'</span>Descuento +4</div>
+      <div class="ev-row"><span class="nm">Getafe</span><span class="sc">1</span></div>
+      <div class="ev-row"><span class="nm">Albacete</span><span class="sc">0</span></div>
     </div>
-    <div class="glb-sub">Juego en curso · Set 2</div>
+    <div class="ev-odds"><div class="odd">1.01</div><div class="odd">12.00</div><div class="odd">41.00</div></div>
+  </a>
+
+  <div class="comp">
+    <div class="comp-name">⚽ LaLiga</div>
+    <div class="comp-cols"><span>1</span><span>X</span><span>2</span></div>
   </div>
-  <div class="glb-side right">
-    <div class="glb-flag-wrap">
-      <svg width="38" height="26" viewBox="0 0 3 2" preserveAspectRatio="none" style="border-radius:2px;display:block"><use href="#flag-ie"/></svg>
-      <div class="glb-country">IRL</div>
+  <div class="ev">
+    <div class="ev-main">
+      <div class="ev-time">67'</div>
+      <div class="ev-row"><span class="nm">Celta de Vigo</span><span class="sc">2</span></div>
+      <div class="ev-row"><span class="nm">Osasuna</span><span class="sc">2</span></div>
     </div>
-    <div class="glb-info right">
-      <div class="glb-name">Ruby<br>Anderson</div>
-      <div class="glb-dot" id="dot-r" style="background:var(--blue)"></div>
+    <div class="ev-odds"><div class="odd">3.40</div><div class="odd">1.95</div><div class="odd">4.75</div></div>
+  </div>
+  <div class="ev">
+    <div class="ev-main">
+      <div class="ev-time">31'</div>
+      <div class="ev-row"><span class="nm">Real Betis</span><span class="sc">0</span></div>
+      <div class="ev-row"><span class="nm">Villarreal</span><span class="sc">1</span></div>
     </div>
+    <div class="ev-odds"><div class="odd">4.20</div><div class="odd">3.30</div><div class="odd">1.85</div></div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-name">⚽ Premier League</div>
+    <div class="comp-cols"><span>1</span><span>X</span><span>2</span></div>
+  </div>
+  <div class="ev">
+    <div class="ev-main">
+      <div class="ev-time">78'</div>
+      <div class="ev-row"><span class="nm">Brighton</span><span class="sc">1</span></div>
+      <div class="ev-row"><span class="nm">Everton</span><span class="sc">1</span></div>
+    </div>
+    <div class="ev-odds"><div class="odd">3.10</div><div class="odd">1.62</div><div class="odd">7.50</div></div>
+  </div>
+
+  <!-- TENIS -->
+  <div class="comp">
+    <div class="comp-name">🎾 WTA 250 · Tokio</div>
+    <div class="comp-cols"><span>1</span><span>2</span></div>
+  </div>
+  <a class="ev hot" href="sakura.html">
+    <div class="ev-main">
+      <div class="ev-time">Set 2 · Juego en curso</div>
+      <div class="ev-row"><span class="srv"></span><svg class="flag" viewBox="0 0 900 600"><use href="#flag-jp"/></svg><span class="nm">Sakura Watanabe</span><span class="sc g">1</span><span class="sc">5</span><span class="sc">0</span></div>
+      <div class="ev-row"><span class="srv off"></span><svg class="flag" viewBox="0 0 3 2" preserveAspectRatio="none"><use href="#flag-ie"/></svg><span class="nm">Ruby Anderson</span><span class="sc g">0</span><span class="sc">3</span><span class="sc">0</span></div>
+    </div>
+    <div class="ev-odds"><div class="odd">1.12</div><div class="odd">6.00</div></div>
+  </a>
+
+  <div class="comp">
+    <div class="comp-name">🎾 ATP Challenger · Lyon</div>
+    <div class="comp-cols"><span>1</span><span>2</span></div>
+  </div>
+  <div class="ev">
+    <div class="ev-main">
+      <div class="ev-time">Set 1</div>
+      <div class="ev-row"><span class="srv off"></span><span class="nm">M. Delacroix</span><span class="sc g">0</span><span class="sc">3</span><span class="sc">15</span></div>
+      <div class="ev-row"><span class="srv"></span><span class="nm">T. Halvorsen</span><span class="sc g">0</span><span class="sc">4</span><span class="sc">30</span></div>
+    </div>
+    <div class="ev-odds"><div class="odd">2.25</div><div class="odd">1.62</div></div>
+  </div>
+
+  <!-- BALONCESTO -->
+  <div class="comp">
+    <div class="comp-name">🏀 Liga Endesa</div>
+    <div class="comp-cols"><span>1</span><span>2</span></div>
+  </div>
+  <div class="ev">
+    <div class="ev-main">
+      <div class="ev-time">4º cuarto · 03:12</div>
+      <div class="ev-row"><span class="nm">Unicaja</span><span class="sc">78</span></div>
+      <div class="ev-row"><span class="nm">Baskonia</span><span class="sc">74</span></div>
+    </div>
+    <div class="ev-odds"><div class="odd">1.30</div><div class="odd">3.40</div></div>
+  </div>
+
+  <!-- ESPORTS -->
+  <div class="comp">
+    <div class="comp-name">🎮 LoL · Superliga</div>
+    <div class="comp-cols"><span>1</span><span>2</span></div>
+  </div>
+  <div class="ev">
+    <div class="ev-main">
+      <div class="ev-time">Mapa 2</div>
+      <div class="ev-row"><span class="nm">Movistar KOI Fénix</span><span class="sc">1</span></div>
+      <div class="ev-row"><span class="nm">Barça eSports</span><span class="sc">0</span></div>
+    </div>
+    <div class="ev-odds"><div class="odd">1.44</div><div class="odd">2.70</div></div>
   </div>
 </div>
 
-<!-- MAPA 2D -->
-<div class="map-center">
-  <svg id="court-svg" viewBox="0 0 390 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="clay" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%"  stop-color="#cf5a33"/>
-        <stop offset="100%" stop-color="#bb4a26"/>
-      </linearGradient>
-      <!-- textura de tierra batida -->
-      <filter id="grain" x="0" y="0" width="100%" height="100%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="n"/>
-        <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0"/>
-        <feComposite in2="SourceGraphic" operator="in"/>
-      </filter>
-      <radialGradient id="ballGrad" cx="35%" cy="30%" r="70%">
-        <stop offset="0%"  stop-color="#f6ff7a"/>
-        <stop offset="55%" stop-color="#d4f000"/>
-        <stop offset="100%" stop-color="#9cc000"/>
-      </radialGradient>
-    </defs>
+<nav class="nav">
+  <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</a>
+  <a href="#" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7"/></svg>En directo</a>
+  <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Mis apuestas</a>
+  <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.4" fill="currentColor"/><circle cx="16" cy="16" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>Casino</a>
+</nav>
 
-    <!-- Fondo exterior arcilla oscura -->
-    <rect x="-400" y="-400" width="1190" height="2000" fill="#9c3a1c"/>
-    <!-- Superficie (las coordenadas Y se escalan en JS para llenar el rectángulo) -->
-    <rect x="6" data-y="8" data-h="184" width="378" fill="url(#clay)" rx="2"/>
-    <rect x="6" data-y="8" data-h="184" width="378" fill="#000" filter="url(#grain)"/>
-
-    <!-- Líneas -->
-    <g stroke="#fff" stroke-opacity="0.92" fill="none">
-      <rect x="14" data-y="17" data-h="166" width="362" stroke-width="2"/>
-      <line x1="14" data-y1="38"  x2="376" data-y2="38"  stroke-width="1.6"/>
-      <line x1="14" data-y1="162" x2="376" data-y2="162" stroke-width="1.6"/>
-      <line x1="98" data-y1="38"  x2="98"  data-y2="162" stroke-width="1.6"/>
-      <line x1="292" data-y1="38" x2="292" data-y2="162" stroke-width="1.6"/>
-      <line x1="98" data-y1="100" x2="292" data-y2="100" stroke-width="1.6"/>
-      <line x1="14" data-y1="100" x2="20"  data-y2="100" stroke-width="2"/>
-      <line x1="370" data-y1="100" x2="376" data-y2="100" stroke-width="2"/>
-    </g>
-    <!-- Red -->
-    <line x1="196.5" data-y1="12" x2="196.5" data-y2="188" stroke="rgba(0,0,0,0.28)" stroke-width="4"/>
-    <line x1="195" data-y1="12" x2="195" data-y2="188" stroke="#fff" stroke-width="2.6"/>
-    <circle cx="195" data-cy="12"  r="3.2" fill="#fff"/>
-    <circle cx="195" data-cy="188" r="3.2" fill="#fff"/>
-
-    <!-- Estela de la pelota (segmentos dinámicos) -->
-    <g id="trail" stroke-linecap="round"></g>
-
-    <!-- Etiquetas jugadoras (bocadillo con piquito, como Bet365) -->
-    <g id="lbl-s" transform="translate(66,100)">
-      <rect class="lbl-bg" x="-50" y="-30" width="100" height="21" rx="5" fill="#f5c518"/>
-      <path class="lbl-tip" d="M-5,-9.5 L5,-9.5 L0,-3 Z" fill="#f5c518"/>
-      <text class="lbl-tx" x="0" y="-15" text-anchor="middle" fill="#111" font-family="'Roboto Condensed',sans-serif" font-size="13" font-weight="700">Sakura Watanabe</text>
-    </g>
-    <g id="lbl-r" transform="translate(324,100)">
-      <rect class="lbl-bg" x="-48" y="-30" width="96" height="21" rx="5" fill="#2f7fae"/>
-      <path class="lbl-tip" d="M-5,-9.5 L5,-9.5 L0,-3 Z" fill="#2f7fae"/>
-      <text class="lbl-tx" x="0" y="-15" text-anchor="middle" fill="#fff" font-family="'Roboto Condensed',sans-serif" font-size="13" font-weight="700">Ruby Anderson</text>
-    </g>
-
-    <!-- Pelota: sombra en el suelo + pelota en el aire -->
-    <ellipse id="ball-shadow" cx="66" cy="100" rx="4.5" ry="2" fill="rgba(60,10,0,0.45)"/>
-    <circle  id="ball" cx="66" cy="100" r="5" fill="url(#ballGrad)" stroke="rgba(0,0,0,0.25)" stroke-width="0.6"/>
-  </svg>
-
-  <!-- Paneles de puntuación (v8) -->
-  <div class="map-score-overlay">
-    <div class="map-panel-left" id="panel-s">
-      <div class="map-big-score" id="big-s">0</div>
-      <div class="map-player-name">Sakura Watanabe</div>
-    </div>
-    <div class="map-panel-right" id="panel-r">
-      <div class="map-big-score" id="big-r">0</div>
-      <div class="map-player-name">Ruby Anderson</div>
-    </div>
-  </div>
-</div>
-
-<!-- Franja de estado: debajo del mapa -->
-<div class="map-status" id="map-status"><span class="map-status-bar" id="status-bar"></span><span id="status-txt">Servicio <b>Sakura Watanabe</b></span></div>
-
-<!-- STATS -->
-<div class="stats-bottom">
-  <div class="stats-tabs">
-    <button class="stats-tab active" onclick="switchTab(this,'sets')">Sets</button>
-    <button class="stats-tab" onclick="switchTab(this,'stats')">Estadísticas</button>
-  </div>
-  <div id="tab-sets" class="stats-content">
-    <div class="stat-sets-header"><span>Set 1</span><span>Set 2</span></div>
-    <div class="stat-player-row">
-      <div class="stat-player-lbl"><div class="stat-player-lbl-dot" style="background:var(--yellow)"></div><svg class="mini-flag" viewBox="0 0 900 600"><use href="#flag-jp"/></svg>Sakura Watanabe</div>
-      <div class="stat-sets"><div class="stat-set-val hl">6</div><div class="stat-set-val hl">5</div></div>
-    </div>
-    <div class="stat-player-row" style="border-bottom:none">
-      <div class="stat-player-lbl"><div class="stat-player-lbl-dot" style="background:var(--blue)"></div><svg class="mini-flag" viewBox="0 0 3 2" preserveAspectRatio="none"><use href="#flag-ie"/></svg>Ruby Anderson</div>
-      <div class="stat-sets"><div class="stat-set-val">2</div><div class="stat-set-val">3</div></div>
-    </div>
-    <div class="stat-grid">
-      <div class="stat-cell"><div class="stat-cell-val">6</div><div class="stat-bar-row"><div class="stat-bar-s" style="width:75%"></div></div><div class="stat-cell-lbl">Aces</div><div class="stat-bar-row"><div class="stat-bar-r" style="width:12%"></div></div><div class="stat-cell-val r">1</div></div>
-      <div class="stat-cell"><div class="stat-cell-val">78%</div><div class="stat-bar-row"><div class="stat-bar-s" style="width:78%"></div></div><div class="stat-cell-lbl">1er servicio</div><div class="stat-bar-row"><div class="stat-bar-r" style="width:54%"></div></div><div class="stat-cell-val r">54%</div></div>
-      <div class="stat-cell"><div class="stat-cell-val">85%</div><div class="stat-bar-row"><div class="stat-bar-s" style="width:85%"></div></div><div class="stat-cell-lbl">Pts 1er srv</div><div class="stat-bar-row"><div class="stat-bar-r" style="width:61%"></div></div><div class="stat-cell-val r">61%</div></div>
-      <div class="stat-cell"><div class="stat-cell-val">1</div><div class="stat-bar-row"><div class="stat-bar-s" style="width:12%"></div></div><div class="stat-cell-lbl">D. faltas</div><div class="stat-bar-row"><div class="stat-bar-r" style="width:40%"></div></div><div class="stat-cell-val r">3</div></div>
-    </div>
-  </div>
-  <div id="tab-stats" class="stats-content" style="display:none">
-    <div class="stat-line"><div class="stat-line-lbl"></div><div class="stat-line-v" style="color:var(--yellow);font-size:13px">S. Watanabe</div><div class="stat-line-v" style="color:var(--blue);font-size:13px">R. Anderson</div></div>
-    <div class="stat-line"><div class="stat-line-lbl">Puntos ganados (set 2)</div><div class="stat-line-v" style="color:var(--yellow)">24</div><div class="stat-line-v" style="color:var(--blue)">18</div></div>
-    <div class="stat-line"><div class="stat-line-lbl">Break points</div><div class="stat-line-v" style="color:var(--yellow)">2/3</div><div class="stat-line-v" style="color:var(--blue)">0/2</div></div>
-    <div class="stat-line"><div class="stat-line-lbl">Vel. máx. saque</div><div class="stat-line-v" style="color:var(--yellow)">192 km/h</div><div class="stat-line-v" style="color:var(--blue)">178 km/h</div></div>
-    <div class="stat-line"><div class="stat-line-lbl">Winners</div><div class="stat-line-v" style="color:var(--yellow)">16</div><div class="stat-line-v" style="color:var(--blue)">9</div></div>
-  </div>
-</div>
-
-<!-- PANTALLA FINAL -->
-<div class="result-overlay" id="result-overlay">
-  <div class="result-inner">
-    <div class="result-icon">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </div>
-    <div class="result-title">APUESTA PERDIDA</div>
-    <div class="result-amount">−140 €</div>
-    <div class="result-amount-lbl">Has perdido tu apuesta</div>
-
-    <div class="result-ticket">
-      <div class="rt-row">
-        <svg class="rt-flag" viewBox="0 0 900 600"><use href="#flag-jp"/></svg>
-        <div class="rt-main">
-          <div class="rt-lbl">Tu apuesta</div>
-          <div class="rt-text lost">Sakura Watanabe gana el juego</div>
-        </div>
-        <div class="rt-badge lost">FALLADA</div>
-      </div>
-      <div class="rt-row">
-        <svg class="rt-flag" viewBox="0 0 3 2" preserveAspectRatio="none"><use href="#flag-ie"/></svg>
-        <div class="rt-main">
-          <div class="rt-lbl">Resultado</div>
-          <div class="rt-text">Ruby Anderson gana el juego</div>
-        </div>
-        <div class="rt-badge win">GANA</div>
-      </div>
-      <div class="rt-money">
-        <span class="rt-money-lbl">Ganancia</span>
-        <span class="rt-money-val"><s>210 €</s><b>0 €</b></span>
-      </div>
-    </div>
-
-    <button class="result-btn" onclick="document.getElementById('result-overlay').classList.remove('active')">Cerrar</button>
-  </div>
-</div>
-
-<script>
-// ─── COORDENADAS (viewBox 390×200, pista 2D horizontal) ───
-// Sakura IZQUIERDA (x=66) · Ruby DERECHA (x=324) · Red x=195
-const S_X = 66, R_X = 324, NET_X = 195, MID_Y = 100;
-
-const ballEl   = document.getElementById('ball');
-const shadowEl = document.getElementById('ball-shadow');
-const trailG   = document.getElementById('trail');
-const lblS     = document.getElementById('lbl-s');
-const lblR     = document.getElementById('lbl-r');
-const SVGNS    = 'http://www.w3.org/2000/svg';
-
-const pos = { s:{x:S_X, y:MID_Y}, r:{x:R_X, y:MID_Y} };
-
-// ─── PISTA QUE LLENA TODO EL RECTÁNGULO DEL MAPA ───
-// Diseño en 390×200; en vertical se estira para ocupar el alto disponible.
-let K = 1;
-const Y = v => v * K;
-const svgEl = document.getElementById('court-svg');
-function layoutCourt() {
-  const box = svgEl.getBoundingClientRect();
-  if (!box.width) return;
-  const H = Math.max(200, 390 * box.height / box.width);
-  K = H / 200;
-  svgEl.setAttribute('viewBox', `0 0 390 ${H.toFixed(2)}`);
-  svgEl.querySelectorAll('[data-y]').forEach(e => {
-    e.setAttribute('y', Y(+e.dataset.y)); e.setAttribute('height', Y(+e.dataset.h));
-  });
-  svgEl.querySelectorAll('[data-y1]').forEach(e => {
-    e.setAttribute('y1', Y(+e.dataset.y1)); e.setAttribute('y2', Y(+e.dataset.y2));
-  });
-  svgEl.querySelectorAll('[data-cy]').forEach(e => e.setAttribute('cy', Y(+e.dataset.cy)));
-  placeLabel('s', pos.s.x, pos.s.y); placeLabel('r', pos.r.x, pos.r.y);
-}
-window.addEventListener('resize', layoutCourt);
-
-// ─── ETIQUETAS: ancho según el nombre ───
-function sizeLabel(g) {
-  const tx = g.querySelector('.lbl-tx');
-  const w  = Math.ceil(tx.getComputedTextLength()) + 16;
-  const bg = g.querySelector('.lbl-bg');
-  bg.setAttribute('x', -w/2); bg.setAttribute('width', w);
-}
-function placeLabel(side, x, y) {
-  pos[side] = { x, y };
-  (side === 's' ? lblS : lblR).setAttribute('transform', `translate(${x.toFixed(1)},${Y(y).toFixed(1)})`);
-}
-function moveLabel(side, tx, ty, dur) {
-  const from = { ...pos[side] }, t0 = performance.now();
-  function step(now) {
-    const t = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - t, 3);
-    placeLabel(side, from.x + (tx - from.x) * e, from.y + (ty - from.y) * e);
-    if (t < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-// ─── PELOTA + ESTELA (estilo Bet365: línea menta que se afila y se desvanece) ───
-const TRAIL_MS = 420, SEGS = 48;
-const trailPts = [];
-const segEls = [];
-for (let i = 0; i < SEGS; i++) {
-  const l = document.createElementNS(SVGNS, 'line');
-  l.setAttribute('stroke', '#7dffd6');
-  l.setAttribute('opacity', '0');
-  trailG.appendChild(l); segEls.push(l);
-}
-function setBall(gx, gyDesign, z) {
-  const gy = Y(gyDesign);
-  shadowEl.setAttribute('cx', gx); shadowEl.setAttribute('cy', gy + 1);
-  const s = Math.max(0.55, 1 - z / 60);
-  shadowEl.setAttribute('rx', 4.5 * s); shadowEl.setAttribute('ry', 2 * s);
-  ballEl.setAttribute('cx', gx); ballEl.setAttribute('cy', gy - z);
-}
-function renderTrail(now) {
-  while (trailPts.length && now - trailPts[0].t > TRAIL_MS) trailPts.shift();
-  const n = trailPts.length;
-  for (let i = 0; i < SEGS; i++) {
-    const el = segEls[i];
-    const a = trailPts[n - 2 - i], b = trailPts[n - 1 - i];
-    if (!a || !b) { el.setAttribute('opacity', '0'); continue; }
-    const age = (now - b.t) / TRAIL_MS;          // 0 = junto a la pelota
-    const k = Math.max(0, 1 - age);
-    el.setAttribute('x1', a.x); el.setAttribute('y1', a.y);
-    el.setAttribute('x2', b.x); el.setAttribute('y2', b.y);
-    el.setAttribute('stroke-width', (0.4 + 2.4 * k).toFixed(2));
-    el.setAttribute('opacity', (0.9 * k).toFixed(2));
-  }
-  requestAnimationFrame(renderTrail);
-}
-requestAnimationFrame(renderTrail);
-
-function animShot(x1, y1, x2, y2, dur, cb) {
-  const h = 20 + Math.random() * 8;   // altura máxima del bote en el aire
-  const t0 = performance.now();
-  function step(now) {
-    const t  = Math.min(1, (now - t0) / dur);
-    const gx = x1 + (x2 - x1) * t;
-    const gy = y1 + (y2 - y1) * t;
-    const z  = 4 * h * t * (1 - t);
-    setBall(gx, gy, z);
-    trailPts.push({ x: gx, y: Y(gy) - z, t: now });
-    if (t < 1) requestAnimationFrame(step); else cb && cb();
-  }
-  requestAnimationFrame(step);
-}
-
-// ─── SECUENCIA DE UN PUNTO ───
-function runPoint(shots, onEnd) {
-  let si = 0;
-  const f = shots[0];
-  const sx = f.from === 's' ? S_X : R_X;
-  placeLabel(f.from, sx, f.yFrom);
-  setBall(sx, f.yFrom, 0);
-
-  function next() {
-    if (si >= shots.length) { onEnd(); return; }
-    const sh = shots[si];
-    const fromX = sh.from === 's' ? S_X : R_X;
-    const toX   = sh.from === 's' ? R_X : S_X;
-    const toSide = sh.from === 's' ? 'r' : 's';
-    moveLabel(toSide, toX, sh.yTo, sh.dur * 0.7);
-    animShot(fromX, sh.yFrom, toX, sh.yTo, sh.dur, () => {
-      si++;
-      setTimeout(next, si >= shots.length ? 300 : 120);
-    });
-  }
-  next();
-}
-
-// ─── PUNTOS DEL JUEGO ───
-const pt1 = { score:{s:'15',r:'0'}, winner:'s', shots:[{ from:'s', yFrom:100, yTo:96, dur:780 }] };
-const pt2 = { score:{s:'30',r:'0'}, winner:'s', shots:[
-  { from:'s', yFrom:84,  yTo:120, dur:900 },
-  { from:'r', yFrom:120, yTo:72,  dur:860 },
-  { from:'s', yFrom:72,  yTo:132, dur:940 }
-]};
-const pt3 = { score:{s:'30',r:'15'}, winner:'r', shots:[
-  { from:'s', yFrom:100, yTo:84,  dur:850 },
-  { from:'r', yFrom:84,  yTo:114, dur:820 },
-  { from:'s', yFrom:114, yTo:78,  dur:900 },
-  { from:'r', yFrom:78,  yTo:100, dur:1000 }
-]};
-const pt4 = { score:{s:'30',r:'30'}, winner:'r', shots:[
-  { from:'s', yFrom:100, yTo:106, dur:830 },
-  { from:'r', yFrom:106, yTo:92,  dur:810 },
-  { from:'s', yFrom:92,  yTo:114, dur:880 },
-  { from:'r', yFrom:114, yTo:72,  dur:860 },
-  { from:'s', yFrom:72,  yTo:121, dur:950 }
-]};
-const pt5 = { score:{s:'30',r:'40'}, winner:'r', shots:[{ from:'r', yFrom:100, yTo:100, dur:720 }] };
-const pt6 = { score:{s:'40',r:'40'}, winner:'s', shots:[
-  { from:'r', yFrom:100, yTo:127, dur:680 },
-  { from:'r', yFrom:100, yTo:100, dur:660 }
-]};
-const pt7_shots = [
-  { from:'s', yFrom:100, yTo:84,  dur:970 },
-  { from:'r', yFrom:84,  yTo:121, dur:920 },
-  { from:'s', yFrom:121, yTo:68,  dur:1000 },
-  { from:'r', yFrom:68,  yTo:114, dur:940 },
-  { from:'s', yFrom:114, yTo:135, dur:1040 }
-];
-const pt8_shots = [
-  { from:'s', yFrom:100, yTo:92,  dur:950 },
-  { from:'r', yFrom:92,  yTo:114, dur:920 },
-  { from:'s', yFrom:114, yTo:75,  dur:1000 },
-  { from:'r', yFrom:75,  yTo:127, dur:960 },
-  { from:'s', yFrom:127, yTo:84,  dur:1040 },
-  { from:'r', yFrom:84,  yTo:108, dur:950 },
-  { from:'s', yFrom:108, yTo:98,  dur:1020 },
-  { from:'r', yFrom:98,  yTo:121, dur:1260 },
-  { from:'s', yFrom:121, yTo:82,  dur:1700 }
-];
-const ALL_POINTS = [pt1, pt2, pt3, pt4, pt5, pt6];
-
-// ─── FLUJO ───
-let ptIdx = 0, mapSeqStarted = false, hideScoreTimer = null;
-
-function startSequence() {
-  if (ptIdx >= ALL_POINTS.length) return;
-  const pt = ALL_POINTS[ptIdx++];
-  setStatus('Servicio <b>Sakura Watanabe</b>');
-  runPoint(pt.shots, () => {
-    updateScore(pt.score.s, pt.score.r, pt.winner);
-    if (ptIdx < ALL_POINTS.length) setTimeout(startSequence, 10000);
-    else setTimeout(() => { if (!mapSeqStarted) { mapSeqStarted = true; runMapSeq(); } }, 2000);
-  });
-}
-
-function updateScore(s, r, winner) {
-  popScore('glb-s', s); popScore('glb-r', r);
-  document.getElementById('dot-s').classList.toggle('on', winner === 's');
-  document.getElementById('dot-r').classList.toggle('on', winner === 'r');
-  showBigScores(s, r);
-}
-function popScore(id, val) {
-  const el = document.getElementById(id);
-  el.textContent = val; el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
-}
-function showBigScores(s, r) {
-  const bs = document.getElementById('big-s'), br = document.getElementById('big-r');
-  bs.textContent = s; br.textContent = r;
-  bs.classList.toggle('word', s.length > 3); br.classList.toggle('word', r.length > 3);
-  document.getElementById('panel-s').classList.add('show');
-  document.getElementById('panel-r').classList.add('show');
-  if (hideScoreTimer) clearTimeout(hideScoreTimer);
-  hideScoreTimer = setTimeout(() => {
-    document.getElementById('panel-s').classList.remove('show');
-    document.getElementById('panel-r').classList.remove('show');
-  }, 2600);
-}
-function setStatus(html, hl = false, color = 'var(--yellow)') {
-  document.getElementById('status-txt').innerHTML = html;
-  document.getElementById('status-bar').style.background = color;
-  document.getElementById('map-status').classList.toggle('hl', hl);
-}
-
-function runMapSeq() {
-  setStatus('Servicio <b>Sakura Watanabe</b>');
-  runPoint(pt7_shots, () => {
-    popScore('glb-s', '40'); popScore('glb-r', 'AD');
-    document.getElementById('dot-r').classList.add('on');
-    document.getElementById('dot-s').classList.remove('on');
-    showBigScores('40', 'AD');
-    setStatus('Ventaja <b>Ruby Anderson</b>', true, 'var(--blue)');
-    setTimeout(() => {
-      setStatus('Bola de juego <b>Ruby Anderson</b>', true, 'var(--blue)');
-      setTimeout(() => {
-        setStatus('Servicio <b>Sakura Watanabe</b>');
-        runPoint(pt8_shots, () => {
-          showBigScores('40', 'JUEGO');
-          setStatus('Juego para <b>Ruby Anderson</b>', true, 'var(--blue)');
-          setTimeout(() => document.getElementById('result-overlay').classList.add('active'), 2600);
-        });
-      }, 2200);
-    }, 1900);
-  });
-}
-
-function switchTab(btn, tab) {
-  document.querySelectorAll('.stats-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('tab-sets').style.display  = tab === 'sets'  ? 'block' : 'none';
-  document.getElementById('tab-stats').style.display = tab === 'stats' ? 'block' : 'none';
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-  layoutCourt();
-  placeLabel('s', S_X, MID_Y); placeLabel('r', R_X, MID_Y);
-  setBall(S_X, MID_Y, 0);
-  const fit = () => { sizeLabel(lblS); sizeLabel(lblR); };
-  fit(); (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
-  setTimeout(startSequence, 1200);
-});
-</script>
 </body>
 </html>
