@@ -36,16 +36,16 @@ a { color:inherit; text-decoration:none; }
 .hdr-btn { width:36px; height:36px; border-radius:50%; background:#13261a; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; }
 
 /* DEPORTES */
-.sports { display:flex; gap:0; padding:0 6px; overflow-x:auto; flex-shrink:0; background:var(--bg-dark); border-bottom:1px solid var(--border); scrollbar-width:none; }
+.sports { display:flex; gap:6px; padding:10px 10px; overflow-x:auto; flex-shrink:0; background:var(--bg-dark); border-bottom:1px solid var(--border); scrollbar-width:none; }
 .sports::-webkit-scrollbar { display:none; }
-.sport { flex-shrink:0; padding:11px 10px 9px; color:var(--dim); font-size:14px; font-weight:500; border-bottom:2px solid transparent; white-space:nowrap; }
-.sport .ct { font-size:11px; color:var(--grey); margin-left:2px; }
-.sport.on { color:#fff; border-bottom-color:var(--yellow); }
+.sport { flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:3px; min-width:62px; padding:6px 4px 5px; border-radius:10px; color:var(--dim); font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:700; }
+.sport .ic { font-size:22px; line-height:1; }
+.sport .ct { font-size:10px; color:var(--grey); font-weight:400; }
+.sport.on { background:rgba(245,197,24,0.12); color:var(--yellow); box-shadow:inset 0 0 0 1px rgba(245,197,24,0.4); }
 
 /* TÍTULO */
 .live-title { display:flex; align-items:center; justify-content:space-between; padding:12px 14px 9px; flex-shrink:0; }
-.live-title h1 { font-family:'Roboto Condensed',sans-serif; font-size:21px; font-weight:700; display:flex; align-items:center; gap:8px; }
-.live-title .live-dot { background:var(--red); }
+.live-title h1 { font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:900; display:flex; align-items:center; gap:9px; }
 .live-pill { display:inline-flex; align-items:center; gap:6px; background:var(--red); padding:5px 10px; border-radius:4px; font-size:13px; font-weight:900; letter-spacing:0.08em; font-family:'Roboto Condensed',sans-serif; }
 .live-dot { width:8px; height:8px; background:#fff; border-radius:50%; animation:blink 1s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
@@ -61,7 +61,7 @@ a { color:inherit; text-decoration:none; }
 .ev { display:flex; align-items:center; gap:8px; padding:10px 12px 10px 14px; border-bottom:1px solid var(--border); position:relative; }
 .ev:active { background:#143021; }
 .ev-main { flex:1; min-width:0; }
-.ev-time { font-family:'Roboto Condensed',sans-serif; font-size:12px; color:#ff6a6a; font-weight:700; margin-bottom:3px; display:flex; align-items:center; gap:7px; }
+.ev-time { font-family:'Roboto Condensed',sans-serif; font-size:12px; color:#ff7070; font-weight:700; margin-bottom:4px; display:flex; align-items:center; gap:7px; }
 .min-badge { background:var(--red); color:#fff; padding:1px 6px; border-radius:3px; animation:pulse 1.4s infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.55} }
 .ev-row { display:flex; align-items:center; gap:5px; font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:700; line-height:1.4; }
@@ -101,17 +101,17 @@ a { color:inherit; text-decoration:none; }
 </div>
 
 <div class="sports">
-  <div class="sport on">En directo <span class="ct">64</span></div>
-  <div class="sport">Fútbol <span class="ct">23</span></div>
-  <div class="sport">Tenis <span class="ct">18</span></div>
-  <div class="sport">Baloncesto <span class="ct">9</span></div>
-  <div class="sport">Voleibol <span class="ct">5</span></div>
-  <div class="sport">Balonmano <span class="ct">4</span></div>
-  <div class="sport">eSports <span class="ct">5</span></div>
+  <div class="sport on"><span class="ic">🔴</span>Directo<span class="ct">64</span></div>
+  <div class="sport"><span class="ic">⚽</span>Fútbol<span class="ct">23</span></div>
+  <div class="sport"><span class="ic">🎾</span>Tenis<span class="ct">18</span></div>
+  <div class="sport"><span class="ic">🏀</span>Baloncesto<span class="ct">9</span></div>
+  <div class="sport"><span class="ic">🏐</span>Voleibol<span class="ct">5</span></div>
+  <div class="sport"><span class="ic">🤾</span>Balonmano<span class="ct">4</span></div>
+  <div class="sport"><span class="ic">🎮</span>eSports<span class="ct">5</span></div>
 </div>
 
 <div class="live-title">
-  <h1><span class="live-dot"></span>En directo</h1>
+  <h1><span class="live-pill"><span class="live-dot"></span>EN DIRECTO</span>Eventos</h1>
   <span class="count">64 eventos</span>
 </div>
 
@@ -119,12 +119,12 @@ a { color:inherit; text-decoration:none; }
 
   <!-- FÚTBOL -->
   <div class="comp">
-    <div class="comp-name">Copa del Rey</div>
+    <div class="comp-name">⚽ Copa del Rey</div>
     <div class="comp-cols"><span>1</span><span>X</span><span>2</span></div>
   </div>
-  <a class="ev" href="getafe.html">
+  <a class="ev hot" href="getafe.html">
     <div class="ev-main">
-      <div class="ev-time">90' <span style="color:var(--grey);font-weight:400">· Descuento +4</span></div>
+      <div class="ev-time"><span class="min-badge">90'</span>Descuento +4</div>
       <div class="ev-row"><span class="nm">Getafe</span><span class="sc">1</span></div>
       <div class="ev-row"><span class="nm">Albacete</span><span class="sc">0</span></div>
     </div>
@@ -132,7 +132,7 @@ a { color:inherit; text-decoration:none; }
   </a>
 
   <div class="comp">
-    <div class="comp-name">LaLiga</div>
+    <div class="comp-name">⚽ LaLiga</div>
     <div class="comp-cols"><span>1</span><span>X</span><span>2</span></div>
   </div>
   <div class="ev">
@@ -153,7 +153,7 @@ a { color:inherit; text-decoration:none; }
   </div>
 
   <div class="comp">
-    <div class="comp-name">Premier League</div>
+    <div class="comp-name">⚽ Premier League</div>
     <div class="comp-cols"><span>1</span><span>X</span><span>2</span></div>
   </div>
   <div class="ev">
@@ -167,10 +167,10 @@ a { color:inherit; text-decoration:none; }
 
   <!-- TENIS -->
   <div class="comp">
-    <div class="comp-name">WTA 250 · Tokio</div>
+    <div class="comp-name">🎾 WTA 250 · Tokio</div>
     <div class="comp-cols"><span>1</span><span>2</span></div>
   </div>
-  <a class="ev" href="sakura.html">
+  <a class="ev hot" href="sakura.html">
     <div class="ev-main">
       <div class="ev-time">Set 2 · Juego en curso</div>
       <div class="ev-row"><span class="srv"></span><svg class="flag" viewBox="0 0 900 600"><use href="#flag-jp"/></svg><span class="nm">Sakura Watanabe</span><span class="sc g">1</span><span class="sc">5</span><span class="sc">0</span></div>
@@ -180,7 +180,7 @@ a { color:inherit; text-decoration:none; }
   </a>
 
   <div class="comp">
-    <div class="comp-name">ATP Challenger · Lyon</div>
+    <div class="comp-name">🎾 ATP Challenger · Lyon</div>
     <div class="comp-cols"><span>1</span><span>2</span></div>
   </div>
   <div class="ev">
@@ -194,7 +194,7 @@ a { color:inherit; text-decoration:none; }
 
   <!-- BALONCESTO -->
   <div class="comp">
-    <div class="comp-name">Liga Endesa</div>
+    <div class="comp-name">🏀 Liga Endesa</div>
     <div class="comp-cols"><span>1</span><span>2</span></div>
   </div>
   <div class="ev">
@@ -208,7 +208,7 @@ a { color:inherit; text-decoration:none; }
 
   <!-- ESPORTS -->
   <div class="comp">
-    <div class="comp-name">LoL · Superliga</div>
+    <div class="comp-name">🎮 LoL · Superliga</div>
     <div class="comp-cols"><span>1</span><span>2</span></div>
   </div>
   <div class="ev">

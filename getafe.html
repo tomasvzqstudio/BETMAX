@@ -17,7 +17,7 @@
 :root {
   --bg:#0c1f13; --bg-dark:#080f0a; --border:#274035; --card:#122a1b;
   --yellow:#f5c518; --white:#fff; --dim:#b9c4bd; --grey:#7a8a80; --red:#d93030;
-  --odd:#1d3d28; --green-gain:#4fd68a; --getafe:#2f6fd0; --albacete:#e9e9e9;
+  --odd:#1d3d28; --green-gain:#3ee88f; --getafe:#2f6fd0; --albacete:#e9e9e9;
 }
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html { height:100%; background:var(--bg); }
@@ -47,7 +47,8 @@ a { color:inherit; text-decoration:none; }
 .score-comp { text-align:center; font-size:12px; color:var(--grey); margin-bottom:8px; }
 .score-main { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:8px; }
 .team { display:flex; flex-direction:column; align-items:center; gap:6px; font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:700; }
-.crest { width:42px; height:42px; display:block; }
+.crest { width:54px; height:54px; display:block; object-fit:contain; }
+.crest.alb { filter:drop-shadow(0 0 1px rgba(255,255,255,0.85)) drop-shadow(0 0 1px rgba(255,255,255,0.5)); }
 .mid { text-align:center; }
 .goals { font-family:'Roboto Condensed',sans-serif; font-size:50px; font-weight:700; line-height:1; letter-spacing:0.02em; }
 .goals .sep { color:var(--grey); margin:0 6px; font-weight:400; }
@@ -65,22 +66,27 @@ a { color:inherit; text-decoration:none; }
 .pball { position:absolute; width:10px; height:10px; margin:-5px 0 0 -5px; border-radius:50%; background:#fff; box-shadow:0 0 0 2px rgba(0,0,0,0.25), 0 0 10px rgba(255,255,255,0.7); transition:left 0.9s ease, top 0.9s ease; }
 
 /* APUESTA PREHECHA (tentación) */
-.tempt { margin:12px 12px 6px; background:#132a1c; border:1px solid #2b4a37; border-radius:6px; overflow:hidden; }
-.tempt-head { display:flex; justify-content:space-between; align-items:center; padding:7px 12px; background:#0f2216; border-bottom:1px solid #2b4a37; font-size:12px; color:var(--dim); }
-.tempt-head .yl { color:var(--yellow); font-weight:700; }
-.tempt-badge { background:#2b4a37; color:#e6ece8; font-size:11px; padding:2px 7px; border-radius:3px; }
-.tempt-row { display:flex; align-items:center; gap:10px; padding:10px 12px 6px; }
+.tempt { position:relative; margin:18px 12px 6px; border:2px solid var(--yellow); border-radius:12px; background:linear-gradient(135deg,#1c2a0c 0%,#163020 60%,#0f2417 100%); padding:16px 14px 12px; box-shadow:0 0 18px rgba(245,197,24,0.15); }
+.tempt-tag { position:absolute; top:-12px; left:12px; background:var(--yellow); color:#000; font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:900; letter-spacing:0.07em; padding:3px 9px; border-radius:4px; }
+.tempt-hot { position:absolute; top:-12px; right:12px; background:var(--red); color:#fff; font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:900; letter-spacing:0.05em; padding:3px 8px; border-radius:4px; }
+.tempt-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
 .tempt-pick { flex:1; }
-.tempt-name { font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:700; line-height:1.1; }
-.tempt-mkt { font-size:13px; color:var(--dim); margin-top:2px; }
-.tempt-odd { font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:700; color:var(--yellow); }
-.tempt-amounts { display:flex; justify-content:space-between; padding:2px 12px 10px; }
-.lbl { white-space:nowrap; font-size:12px; color:var(--grey); margin-bottom:1px; }
+.tempt-name { font-family:'Roboto Condensed',sans-serif; font-size:25px; font-weight:900; line-height:1.05; }
+.tempt-mkt { font-family:'Roboto Condensed',sans-serif; font-size:14px; color:var(--yellow); font-weight:700; margin-top:2px; }
+.tempt-odd { text-align:center; background:rgba(245,197,24,0.13); border:1px solid rgba(245,197,24,0.45); border-radius:6px; padding:4px 9px; }
+.tempt-odd small { display:block; font-size:9px; letter-spacing:0.1em; color:var(--yellow); font-weight:700; }
+.tempt-odd b { font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:900; color:var(--yellow); }
+.tempt-amounts { display:grid; grid-template-columns:auto 1fr auto; align-items:end; background:rgba(0,0,0,0.35); border-radius:8px; padding:8px 12px 9px; }
+.tempt-amounts .arrow { text-align:center; }
+.lbl { white-space:nowrap; font-size:11px; color:var(--dim); letter-spacing:0.03em; text-transform:uppercase; font-weight:700; margin-bottom:2px; }
 .r { text-align:right; }
-.amt { white-space:nowrap; font-family:'Roboto Condensed',sans-serif; font-size:38px; font-weight:700; line-height:1; }
+.amt { white-space:nowrap; font-family:'Roboto Condensed',sans-serif; font-size:38px; font-weight:900; line-height:1; }
 .amt.gain { color:var(--green-gain); }
-.btn-bet { display:block; width:calc(100% - 24px); margin:0 12px 12px; border:none; border-radius:4px; background:var(--yellow); color:#000; font-family:'Roboto Condensed',sans-serif; font-size:19px; font-weight:700; padding:13px 0; cursor:pointer; }
-.btn-bet:active { opacity:0.85; }
+.arrow { font-size:22px; color:var(--yellow); opacity:0.6; padding:0 4px 8px; }
+.tempt-social-x { font-size:12px; color:var(--dim); margin:9px 2px 10px; display:flex; align-items:center; gap:6px; }
+.tempt-social-x b { color:#fff; }
+.btn-bet { display:block; width:100%; border:none; border-radius:8px; background:var(--yellow); color:#000; font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:900; letter-spacing:0.04em; padding:13px 0; cursor:pointer; }
+.btn-bet:active { transform:scale(0.98); }
 
 /* Apuesta activa (después de apostar) */
 .active-card { display:none; }
@@ -163,7 +169,7 @@ a { color:inherit; text-decoration:none; }
     <div class="score-comp">Copa del Rey · Dieciseisavos de final</div>
     <div class="score-main">
       <div class="team">
-        <svg class="crest" viewBox="0 0 40 40"><path d="M13 3 L8 5 L2 11 L6 16 L10 13 V36 H30 V13 L34 16 L38 11 L32 5 L27 3 Q20 8 13 3 Z" fill="#1f5cbf" stroke="#0e2f66" stroke-width="1.2" stroke-linejoin="round"/><path d="M13 3 Q20 8 27 3" fill="none" stroke="#fff" stroke-width="1.6"/></svg>
+        <img class="crest" src="getafe-escudo.png" alt="">
         Getafe
       </div>
       <div class="mid">
@@ -172,7 +178,7 @@ a { color:inherit; text-decoration:none; }
         <div class="added">Descuento +4'</div>
       </div>
       <div class="team">
-        <svg class="crest" viewBox="0 0 40 40"><path d="M13 3 L8 5 L2 11 L6 16 L10 13 V36 H30 V13 L34 16 L38 11 L32 5 L27 3 Q20 8 13 3 Z" fill="#f4f4f4" stroke="#9a9a9a" stroke-width="1.2" stroke-linejoin="round"/><path d="M13 3 Q20 8 27 3" fill="none" stroke="#111" stroke-width="1.6"/></svg>
+        <img class="crest alb" src="albacete-escudo.png" alt="">
         Albacete
       </div>
     </div>
@@ -202,34 +208,37 @@ a { color:inherit; text-decoration:none; }
 
   <!-- APUESTA PREHECHA -->
   <div class="tempt" id="tempt">
-    <div class="tempt-head"><span class="yl">Apuesta rápida</span><span class="tempt-badge">Más apostada</span></div>
+    <div class="tempt-tag">⚡ APUESTA RÁPIDA</div>
+    <div class="tempt-hot">🔥 POPULAR</div>
     <div class="tempt-row">
       <div class="tempt-pick">
         <div class="tempt-name">No hay más goles</div>
-        <div class="tempt-mkt">Segundo gol · Minuto 90 · Getafe 1-0</div>
+        <div class="tempt-mkt">Minuto 90 · Getafe 1-0 Albacete</div>
       </div>
-      <div class="tempt-odd">1.233</div>
+      <div class="tempt-odd"><small>CUOTA</small><b>1.233</b></div>
     </div>
-    <div class="tempt-amounts">
-      <div><div class="lbl">Apuesta</div><div class="amt">100,00 €</div></div>
-      <div class="r"><div class="lbl">Ganancias potenciales</div><div class="amt gain">123,30 €</div></div>
+    <div class="tempt-amounts" style="margin-bottom:12px">
+      <div><div class="lbl">Apuesta</div><div class="amt">100 €</div></div>
+      <div class="arrow">→</div>
+      <div class="r"><div class="lbl">Ganancia potencial</div><div class="amt gain">123,30 €</div></div>
     </div>
-    <button class="btn-bet" onclick="openSlip(100)">Apostar 100,00 €</button>
+    <button class="btn-bet" onclick="openSlip(100)">APOSTAR</button>
   </div>
 
   <!-- APUESTA ACTIVA (tras confirmar) -->
-  <div class="tempt active-card">
-    <div class="tempt-head"><span>Mis apuestas · Sencilla</span><span>En curso</span></div>
+  <div class="tempt active-card" style="animation:none">
+    <div class="tempt-tag">APUESTA ACTIVA</div>
     <div class="tempt-row">
       <div class="tempt-pick">
         <div class="tempt-name">No hay más goles</div>
-        <div class="tempt-mkt">Segundo gol · Getafe v Albacete</div>
+        <div class="tempt-mkt">Segundo gol · Getafe – Albacete</div>
       </div>
-      <div class="tempt-odd">1.233</div>
+      <div class="tempt-odd"><small>CUOTA</small><b>1.233</b></div>
     </div>
-    <div class="tempt-amounts">
-      <div><div class="lbl">Apuesta</div><div class="amt">100,00 €</div></div>
-      <div class="r"><div class="lbl">Ganancias potenciales</div><div class="amt gain">123,30 €</div></div>
+    <div class="tempt-amounts" style="margin-bottom:12px">
+      <div><div class="lbl">Apostado</div><div class="amt">100 €</div></div>
+      <div class="arrow">→</div>
+      <div class="r"><div class="lbl">Ganancia potencial</div><div class="amt gain">123,30 €</div></div>
     </div>
   </div>
 
@@ -362,7 +371,7 @@ function setStake(v) {
   document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', +c.dataset.v === v));
   const b = document.getElementById('place');
   b.disabled = !v;
-  b.textContent = v ? `Realizar apuesta  ${v},00 €` : 'Introduce un importe';
+  b.textContent = v ? 'Realizar apuesta' : 'Introduce un importe';
 }
 document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => setStake(+c.dataset.v)));
 
