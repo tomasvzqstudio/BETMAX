@@ -4,7 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BETMAX">
+<meta name="theme-color" content="#080f0a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
 <title>BETMAX · Sakura vs Ruby</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap');
@@ -32,13 +38,13 @@ body {
   font-family:'Roboto',sans-serif;
   max-width:430px; margin:0 auto;
   overflow:hidden; display:flex; flex-direction:column;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
+  overscroll-behavior:none;
+  -webkit-user-select:none; user-select:none; -webkit-touch-callout:none;
 }
 .cond { font-family:'Roboto Condensed',sans-serif; }
 
 /* ── HEADER ── */
-.app-header { background:#080f0a; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); flex-shrink:0; }
+.app-header { background:#080f0a; padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); flex-shrink:0; }
 .logo { font-family:'Roboto Condensed',sans-serif; font-weight:900; font-size:30px; line-height:1; color:var(--yellow); letter-spacing:0.02em; }
 .logo span { color:var(--white); }
 .live-pill { display:flex; align-items:center; gap:8px; background:var(--red); padding:7px 13px; border-radius:5px; font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:900; letter-spacing:0.08em; line-height:1; box-shadow:0 0 0 0 rgba(217,48,48,0.6); animation:livePulse 1.6s infinite; }
@@ -119,6 +125,8 @@ body {
 
 /* ── STATS ── */
 .stats-bottom { flex-shrink:0; }
+/* Solo el margen justo para la barrita de inicio del iPhone, sin hueco vacío */
+.stats-bottom .stats-content { padding-bottom:max(10px, calc(env(safe-area-inset-bottom,0px) - 12px)); }
 .stats-tabs { display:flex; background:#080f0a; border-bottom:1px solid var(--border); }
 .stats-tab { flex:1; padding:9px 0; font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--grey); background:none; border:none; border-bottom:2px solid transparent; cursor:pointer; transition:all 0.2s; }
 .stats-tab.active { color:var(--yellow); border-bottom-color:var(--yellow); }
