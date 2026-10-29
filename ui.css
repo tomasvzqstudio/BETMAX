@@ -1,0 +1,22 @@
+/* ── Transiciones entre pantallas y respuesta al tacto ── */
+html { background:#0c1f13; }
+body { animation:pageIn 0.34s cubic-bezier(0.22,1,0.36,1) both; }
+body.back-in { animation-name:pageInBack; }
+@keyframes pageIn     { from { opacity:0; transform:translateX(36px); } to { opacity:1; transform:none; } }
+@keyframes pageInBack { from { opacity:0; transform:translateX(-36px); } to { opacity:1; transform:none; } }
+body.leaving      { animation:pageOut 0.2s ease-in both; }
+body.leaving.back { animation-name:pageOutBack; }
+@keyframes pageOut     { to { opacity:0; transform:translateX(-28px); } }
+@keyframes pageOutBack { to { opacity:0; transform:translateX(28px); } }
+
+/* Elementos táctiles */
+.ev, .odd, .opt, .chip, .btn-bet, .btn-place, .hdr-left, .sport, .tab, .stats-tab, .result-btn, .hdr-btn, .nav a, .sh-close {
+  transition:transform 0.14s ease, background-color 0.14s ease, filter 0.14s ease, opacity 0.14s ease;
+  -webkit-tap-highlight-color:transparent; cursor:pointer;
+}
+.ev.pressed { background:#284f36 !important; }
+.ev.pressed .odd { background:#1a3524; }
+.ev.pressed .ev-main { transform:translateX(2px); transition:transform 0.14s ease; }
+.odd.pressed, .opt.pressed, .chip.pressed, .tab.pressed, .sport.pressed, .hdr-btn.pressed { transform:scale(0.94); filter:brightness(1.3); }
+.btn-bet.pressed, .btn-place.pressed, .result-btn.pressed { transform:scale(0.97); filter:brightness(0.9); }
+.hdr-left.pressed, .nav a.pressed, .sh-close.pressed, .stats-tab.pressed { opacity:0.55; }

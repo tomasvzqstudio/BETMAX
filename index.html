@@ -83,8 +83,10 @@ a { color:inherit; text-decoration:none; }
 .nav a.on { color:var(--yellow); }
 .nav svg { width:24px; height:24px; }
 </style>
+<link rel="stylesheet" href="ui.css">
 </head>
 <body>
+<script>try{if(sessionStorage.getItem("nav")==="back")document.body.classList.add("back-in");sessionStorage.removeItem("nav");}catch(e){}</script>
 
 <svg width="0" height="0" style="position:absolute">
   <defs>
@@ -168,7 +170,7 @@ a { color:inherit; text-decoration:none; }
 
   <!-- TENIS -->
   <div class="comp">
-    <div class="comp-name"><img class="cic" src="icons/tenis.png" alt="">WTA 250 · Tokio</div>
+    <div class="comp-name"><img class="cic" src="icons/tenis.png" alt="">WTA 250 · Hobart (Australia)</div>
     <div class="comp-cols"><span>1</span><span>2</span></div>
   </div>
   <a class="ev hot" href="sakura.html">
@@ -229,5 +231,6 @@ a { color:inherit; text-decoration:none; }
   <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.4" fill="currentColor"/><circle cx="16" cy="16" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>Casino</a>
 </nav>
 
+<script src="ui.js"></script>
 </body>
 </html>
