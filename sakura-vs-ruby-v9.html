@@ -228,13 +228,14 @@ body {
     <defs>
       <!-- Gradiente de fondo pista -->
       <linearGradient id="courtGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#7a2200"/>
-        <stop offset="100%" stop-color="#c84010"/>
+        <stop offset="0%" stop-color="#8b3a00"/>
+        <stop offset="100%" stop-color="#d4540f"/>
       </linearGradient>
-      <!-- Gradiente cielo -->
+      <!-- Gradiente cielo de día -->
       <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#1a0a30"/>
-        <stop offset="100%" stop-color="#2a1050"/>
+        <stop offset="0%" stop-color="#3a7fc1"/>
+        <stop offset="60%" stop-color="#6aaee8"/>
+        <stop offset="100%" stop-color="#a8d4f5"/>
       </linearGradient>
       <!-- Pelota: gradiente radial verde-amarillo -->
       <radialGradient id="ballGrad" cx="36%" cy="28%" r="62%">
@@ -259,22 +260,13 @@ body {
 
     <!-- FONDO CIELO + TRIBUNAS -->
     <rect x="0" y="0" width="390" height="240" fill="url(#skyGrad)"/>
-    <!-- Gradiente ambiente purpura en las tribunas -->
-    <rect x="0" y="0" width="390" height="95" fill="rgba(100,40,180,0.18)"/>
-    <!-- Silueta tribunas izquierda -->
-    <polygon points="0,95 120,68 200,62 280,68 390,95 390,98 0,98" fill="rgba(0,0,0,0.6)"/>
-    <!-- Luces de estadio (destellos) -->
-    <circle cx="48"  cy="54" r="6" fill="rgba(255,240,180,0.85)"/>
-    <circle cx="100" cy="46" r="5" fill="rgba(255,240,180,0.80)"/>
-    <circle cx="195" cy="40" r="6" fill="rgba(255,240,180,0.80)"/>
-    <circle cx="290" cy="46" r="5" fill="rgba(255,240,180,0.78)"/>
-    <circle cx="342" cy="54" r="6" fill="rgba(255,240,180,0.82)"/>
-    <!-- Halos de luz alrededor -->
-    <circle cx="48"  cy="54" r="16" fill="rgba(255,240,180,0.12)"/>
-    <circle cx="100" cy="46" r="14" fill="rgba(255,240,180,0.10)"/>
-    <circle cx="195" cy="40" r="18" fill="rgba(255,240,180,0.10)"/>
-    <circle cx="290" cy="46" r="14" fill="rgba(255,240,180,0.10)"/>
-    <circle cx="342" cy="54" r="16" fill="rgba(255,240,180,0.10)"/>
+    <!-- Nubes suaves -->
+    <ellipse cx="80"  cy="55" rx="38" ry="14" fill="rgba(255,255,255,0.55)"/>
+    <ellipse cx="130" cy="48" rx="28" ry="10" fill="rgba(255,255,255,0.45)"/>
+    <ellipse cx="270" cy="52" rx="42" ry="13" fill="rgba(255,255,255,0.50)"/>
+    <ellipse cx="330" cy="44" rx="30" ry="10" fill="rgba(255,255,255,0.40)"/>
+    <!-- Silueta tribunas de día -->
+    <polygon points="0,95 120,68 200,62 280,68 390,95 390,98 0,98" fill="rgba(180,160,130,0.75)"/>
 
     <!-- ═══ PISTA EN PERSPECTIVA ═══
          Vista desde detrás del jugador S (Sakura, fondo izq)
