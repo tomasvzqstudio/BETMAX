@@ -45,25 +45,25 @@ body {
 .live-dot { width:6px;height:6px;background:#fff;border-radius:50%;animation:blink 1s infinite; }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.15}}
 
-/* ── BET CARD — cifras más grandes ── */
-.bet-card { margin:8px 12px 6px; background:linear-gradient(135deg,#0a1f12 0%,#163020 100%); border:1.5px solid var(--yellow); border-radius:12px; padding:10px 14px; flex-shrink:0; }
-.bc-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+/* ── BET CARD ── */
+.bet-card { margin:10px 12px 8px; background:linear-gradient(135deg,#0a1f12 0%,#163020 100%); border:1.5px solid var(--yellow); border-radius:12px; padding:12px 14px; flex-shrink:0; }
+.bc-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:9px; }
 .bc-label { font-size:10px; color:var(--yellow); font-weight:700; letter-spacing:0.09em; text-transform:uppercase; }
 .bc-odd-tag { background:rgba(245,197,24,0.15); border:1px solid rgba(245,197,24,0.4); border-radius:3px; padding:2px 7px; font-family:'Roboto Condensed',sans-serif; font-size:13px; font-weight:900; color:var(--yellow); }
-.bc-pick { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.bc-pick { display:flex; align-items:center; gap:8px; margin-bottom:11px; }
 .bc-pick-text { font-family:'Roboto Condensed',sans-serif; font-size:17px; font-weight:900; color:var(--white); line-height:1.1; }
 .bc-pick-text span { color:var(--yellow); font-size:13px; }
-.bc-amounts { display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,0.3); border-radius:8px; padding:10px 16px; }
-.bc-col { display:flex; flex-direction:column; gap:3px; }
+.bc-amounts { display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,0.3); border-radius:8px; padding:10px 14px; }
+.bc-col { display:flex; flex-direction:column; gap:2px; }
 .bc-col.right { align-items:flex-end; }
-.bc-col-label { font-size:11px; color:var(--white-dim); letter-spacing:0.04em; text-transform:uppercase; font-weight:500; }
+.bc-col-label { font-size:10px; color:var(--grey); letter-spacing:0.05em; text-transform:uppercase; }
 .bc-col-value { font-family:'Roboto Condensed',sans-serif; font-size:38px; font-weight:900; line-height:1; }
 .bc-col-value.stake { color:var(--white); }
 .bc-col-value.gain  { color:var(--green-gain); }
-.bc-arrow { font-size:24px; color:var(--yellow); opacity:0.5; padding:0 4px; }
+.bc-arrow { font-size:22px; color:var(--yellow); opacity:0.5; padding:0 6px; }
 
 /* ── MARCADOR ── */
-.game-live-bar { background:#080f0a; border-bottom:1px solid rgba(245,197,24,0.25); padding:7px 12px 5px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; gap:8px; }
+.game-live-bar { background:#080f0a; border-bottom:1px solid rgba(245,197,24,0.25); padding:8px 12px 6px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; gap:8px; }
 .glb-side { display:flex; align-items:center; gap:7px; flex:1; }
 .glb-side.right { flex-direction:row-reverse; }
 .glb-flag-wrap { display:flex; flex-direction:column; align-items:center; gap:2px; }
@@ -83,49 +83,48 @@ body {
 .glb-sep { font-family:'Roboto Condensed',sans-serif; font-size:22px; color:var(--border); }
 .glb-sub { font-size:9px; color:var(--grey); letter-spacing:0.07em; text-transform:uppercase; }
 
-/* ── MAPA — ocupa el espacio restante ── */
-.map-center { position:relative; flex:1; min-height:0; overflow:hidden; background:#1a5c2a; }
+/* ── MAPA ── ocupa todo el espacio restante */
+.map-center { position:relative; flex:1; min-height:0; overflow:hidden; }
 #court-svg { width:100%; height:100%; display:block; }
 
-/* Paneles laterales de puntuación */
+/* Paneles de puntuación — AMBOS se abren a la vez (como v8) */
 .map-score-overlay { position:absolute; inset:0; pointer-events:none; z-index:10; overflow:hidden; }
 .map-panel-left {
   position:absolute; top:0; left:0; bottom:0; width:50%;
-  background:linear-gradient(90deg, rgba(160,35,0,0.92) 0%, rgba(190,55,0,0.75) 100%);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
-  transform:translateX(-100%); transition:transform 0.30s cubic-bezier(0.22,1,0.36,1);
+  background:linear-gradient(90deg, rgba(180,40,0,0.82) 0%, rgba(200,60,0,0.65) 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+  transform:translateX(-100%); transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
 }
 .map-panel-left.show { transform:translateX(0); }
 .map-panel-right {
   position:absolute; top:0; right:0; bottom:0; width:50%;
-  background:linear-gradient(270deg, rgba(50,25,150,0.92) 0%, rgba(70,45,170,0.75) 100%);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
-  transform:translateX(100%); transition:transform 0.30s cubic-bezier(0.22,1,0.36,1);
+  background:linear-gradient(270deg, rgba(60,30,160,0.82) 0%, rgba(80,50,180,0.65) 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+  transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
 }
 .map-panel-right.show { transform:translateX(0); }
-.map-big-score { font-family:'Roboto Condensed',sans-serif; font-size:clamp(52px,13vw,72px); font-weight:900; color:var(--yellow); line-height:1; text-shadow:0 2px 16px rgba(0,0,0,0.9); }
-.map-player-name { font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:700; color:rgba(255,255,255,0.95); text-shadow:0 1px 6px rgba(0,0,0,0.95); text-align:center; padding:0 8px; }
-
-.map-bottom-status { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.72); padding:4px 10px; text-align:center; font-size:11px; color:rgba(255,255,255,0.80); font-style:italic; z-index:10; }
+.map-big-score { font-family:'Roboto Condensed',sans-serif; font-size:72px; font-weight:900; color:var(--yellow); line-height:1; text-shadow:0 2px 16px rgba(0,0,0,0.9); }
+.map-player-name { font-family:'Roboto Condensed',sans-serif; font-size:13px; font-weight:700; color:rgba(255,255,255,0.92); text-shadow:0 1px 6px rgba(0,0,0,0.95); text-align:center; padding:0 8px; }
+.map-bottom-status { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); padding:4px 10px; text-align:center; font-size:11px; color:rgba(255,255,255,0.75); font-style:italic; z-index:10; }
 .map-bottom-status.hl { color:var(--yellow); font-weight:700; font-style:normal; }
 
 /* ── STATS ── */
 .stats-bottom { flex-shrink:0; border-top:1px solid var(--border); }
 .stats-tabs { display:flex; background:#080f0a; border-bottom:1px solid var(--border); }
-.stats-tab { flex:1; padding:8px 0; font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--grey); background:none; border:none; border-bottom:2px solid transparent; cursor:pointer; transition:all 0.2s; }
+.stats-tab { flex:1; padding:9px 0; font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--grey); background:none; border:none; border-bottom:2px solid transparent; cursor:pointer; transition:all 0.2s; }
 .stats-tab.active { color:var(--yellow); border-bottom-color:var(--yellow); }
-.stats-content { padding:8px 14px; }
-.stat-sets-header { text-align:right; font-size:10px; color:var(--grey); margin-bottom:3px; padding-right:4px; }
-.stat-player-row { display:flex; align-items:center; justify-content:space-between; padding:4px 0; border-bottom:1px solid var(--border); }
+.stats-content { padding:10px 14px; }
+.stat-sets-header { text-align:right; font-size:10px; color:var(--grey); margin-bottom:4px; padding-right:4px; }
+.stat-player-row { display:flex; align-items:center; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--border); }
 .stat-player-row:last-child { border-bottom:none; }
 .stat-player-lbl { font-size:12px; font-weight:500; display:flex; align-items:center; gap:6px; }
 .stat-player-lbl-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0; }
 .stat-set-val { font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:900; min-width:28px; text-align:center; }
 .stat-set-val.hl { color:var(--yellow); }
-.stat-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0; margin-top:8px; }
-.stat-cell { text-align:center; padding:6px 4px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+.stat-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0; margin-top:10px; }
+.stat-cell { text-align:center; padding:8px 4px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
 .stat-cell:last-child { border-right:none; }
-.stat-cell-val { font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:900; color:var(--yellow); }
+.stat-cell-val { font-family:'Roboto Condensed',sans-serif; font-size:18px; font-weight:900; color:var(--yellow); }
 .stat-cell-val.r { color:var(--blue); }
 .stat-cell-lbl { font-size:9px; color:var(--grey); margin-top:2px; }
 .stat-bar-row { display:flex; height:2px; background:var(--border); margin-top:3px; }
@@ -209,129 +208,123 @@ body {
   </div>
 </div>
 
-<!-- MAPA — pista horizontal vista cenital (como Bet365) -->
+<!-- MAPA -->
 <div class="map-center">
-  <svg id="court-svg" viewBox="0 0 390 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <svg id="court-svg" viewBox="0 0 390 182" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <!-- Superficie pista terracota (tierra batida, Roland Garros style) -->
-      <linearGradient id="courtGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#c44a10"/>
-        <stop offset="100%" stop-color="#a83808"/>
+      <!-- Superficie pista — azul estilo pista dura (US Open / Bet365) -->
+      <linearGradient id="courtSurface" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2060a8"/>
+        <stop offset="100%" stop-color="#1a4e8e"/>
       </linearGradient>
-      <!-- Fondo exterior a la pista (zona de fondo) -->
-      <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#8c2800"/>
-        <stop offset="100%" stop-color="#7a2000"/>
+      <!-- Zona exterior (pista dura, tono más oscuro) -->
+      <linearGradient id="courtOuter" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#174080"/>
+        <stop offset="100%" stop-color="#0f2a58"/>
+      </linearGradient>
+      <!-- Zona de saque (tono ligeramente diferente, como Bet365) -->
+      <linearGradient id="serviceZone" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1e54a0"/>
+        <stop offset="100%" stop-color="#163e88"/>
       </linearGradient>
       <!-- Pelota -->
       <radialGradient id="ballGrad" cx="35%" cy="28%" r="65%">
         <stop offset="0%" stop-color="#f0ff50"/>
-        <stop offset="50%" stop-color="#c8e800"/>
+        <stop offset="45%" stop-color="#c8e800"/>
         <stop offset="100%" stop-color="#88b800"/>
       </radialGradient>
       <filter id="ballGlow" x="-100%" y="-100%" width="300%" height="300%">
-        <feGaussianBlur stdDeviation="1.8" result="blur"/>
+        <feGaussianBlur stdDeviation="2" result="blur"/>
         <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
+      <clipPath id="ballClip"><circle cx="0" cy="0" r="9"/></clipPath>
     </defs>
 
-    <!-- FONDO: zona exterior a la pista -->
-    <rect x="0" y="0" width="390" height="160" fill="url(#bgGrad)"/>
+    <!-- FONDO EXTERIOR (zona fuera de las líneas de banda) -->
+    <rect x="0" y="0" width="390" height="182" fill="url(#courtOuter)"/>
 
-    <!-- SUPERFICIE DE LA PISTA (horizontal, ocupa casi todo el ancho) -->
-    <!-- La pista ocupa de x=14 a x=376, y de y=12 a y=148 -->
-    <rect x="14" y="12" width="362" height="136" fill="url(#courtGrad)" rx="1"/>
+    <!-- SUPERFICIE PRINCIPAL DE LA PISTA -->
+    <rect x="14" y="16" width="362" height="150" fill="url(#courtSurface)"/>
 
-    <!-- LÍNEAS DE LA PISTA (blancas, vista cenital) -->
-    <!-- Línea de fondo izquierda (S) -->
-    <line x1="14"  y1="12"  x2="14"  y2="148" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
-    <!-- Línea de fondo derecha (R) -->
-    <line x1="376" y1="12"  x2="376" y2="148" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
-    <!-- Línea lateral arriba -->
-    <line x1="14"  y1="12"  x2="376" y2="12"  stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
-    <!-- Línea lateral abajo -->
-    <line x1="14"  y1="148" x2="376" y2="148" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+    <!-- ZONAS DE SAQUE (color ligeramente diferente, como Bet365) -->
+    <!-- Cuadrado saque izq-arriba -->
+    <rect x="105" y="37" width="90" height="54" fill="url(#serviceZone)" opacity="0.6"/>
+    <!-- Cuadrado saque izq-abajo -->
+    <rect x="105" y="91" width="90" height="54" fill="url(#serviceZone)" opacity="0.6"/>
+    <!-- Cuadrado saque der-arriba -->
+    <rect x="195" y="37" width="90" height="54" fill="url(#serviceZone)" opacity="0.6"/>
+    <!-- Cuadrado saque der-abajo -->
+    <rect x="195" y="91" width="90" height="54" fill="url(#serviceZone)" opacity="0.6"/>
 
-    <!-- Líneas de singles (más estrechas, interiores) -->
-    <line x1="14"  y1="30"  x2="376" y2="30"  stroke="rgba(255,255,255,0.60)" stroke-width="1.2"/>
-    <line x1="14"  y1="130" x2="376" y2="130" stroke="rgba(255,255,255,0.60)" stroke-width="1.2"/>
+    <!-- LÍNEAS EXTERIORES (blancas, bien visibles) -->
+    <!-- Fondo izquierdo (Sakura) -->
+    <line x1="14"  y1="16"  x2="14"  y2="166" stroke="white" stroke-width="2"/>
+    <!-- Fondo derecho (Ruby) -->
+    <line x1="376" y1="16"  x2="376" y2="166" stroke="white" stroke-width="2"/>
+    <!-- Lateral superior -->
+    <line x1="14"  y1="16"  x2="376" y2="16"  stroke="white" stroke-width="2"/>
+    <!-- Lateral inferior -->
+    <line x1="14"  y1="166" x2="376" y2="166" stroke="white" stroke-width="2"/>
 
-    <!-- Líneas de servicio (a ~1/3 de cada lado de la red) -->
-    <!-- Lado S: x≈14+108=122 -->
-    <line x1="122" y1="30"  x2="122" y2="130" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/>
-    <!-- Lado R: x≈376-108=268 -->
-    <line x1="268" y1="30"  x2="268" y2="130" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/>
+    <!-- LÍNEAS DE SINGLES (interiores) -->
+    <line x1="14"  y1="37"  x2="376" y2="37"  stroke="white" stroke-width="1.5"/>
+    <line x1="14"  y1="145" x2="376" y2="145" stroke="white" stroke-width="1.5"/>
 
-    <!-- Centro vertical (línea de saque en T) -->
-    <line x1="122" y1="80"  x2="268" y2="80"  stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
-    <!-- Marca de centro en fondo S -->
-    <line x1="14"  y1="77"  x2="14"  y2="83"  stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
-    <!-- Marca de centro en fondo R -->
-    <line x1="376" y1="77"  x2="376" y2="83"  stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
+    <!-- LÍNEAS DE SERVICIO -->
+    <line x1="105" y1="37"  x2="105" y2="145" stroke="white" stroke-width="1.5"/>
+    <line x1="285" y1="37"  x2="285" y2="145" stroke="white" stroke-width="1.5"/>
 
-    <!-- RED — línea central vertical gruesa -->
-    <!-- Poste arriba -->
-    <circle cx="195" cy="10" r="3.5" fill="rgba(255,255,255,0.80)"/>
-    <!-- Poste abajo -->
-    <circle cx="195" cy="150" r="3.5" fill="rgba(255,255,255,0.80)"/>
-    <!-- Sombra red -->
-    <line x1="195" y1="12" x2="195" y2="148" stroke="rgba(0,0,0,0.35)" stroke-width="6"/>
-    <!-- Red -->
-    <line x1="195" y1="12" x2="195" y2="148" stroke="rgba(255,255,255,0.90)" stroke-width="3"/>
-    <!-- Textura malla (líneas horizontales finas) -->
-    <line x1="193" y1="24"  x2="197" y2="24"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="36"  x2="197" y2="36"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="48"  x2="197" y2="48"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="60"  x2="197" y2="60"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="72"  x2="197" y2="72"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="84"  x2="197" y2="84"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="96"  x2="197" y2="96"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="108" x2="197" y2="108" stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="120" x2="197" y2="120" stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="132" x2="197" y2="132" stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-    <line x1="193" y1="144" x2="197" y2="144" stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <!-- LÍNEA CENTRAL DE SAQUE (T) -->
+    <line x1="195" y1="37"  x2="195" y2="145" stroke="white" stroke-width="1.5"/>
+
+    <!-- MARCA CENTRAL EN LÍNEAS DE FONDO -->
+    <line x1="14"  y1="88"  x2="14"  y2="94"  stroke="white" stroke-width="2"/>
+    <line x1="376" y1="88"  x2="376" y2="94"  stroke="white" stroke-width="2"/>
+
+    <!-- RED — sombra + línea + postes -->
+    <line x1="195" y1="14" x2="195" y2="168" stroke="rgba(0,0,0,0.4)" stroke-width="8"/>
+    <line x1="195" y1="14" x2="195" y2="168" stroke="rgba(255,255,255,0.90)" stroke-width="3"/>
+    <!-- Correa central -->
+    <rect x="193" y="88" width="4" height="6" fill="white" rx="1"/>
+    <!-- Postes -->
+    <circle cx="195" cy="13"  r="4" fill="white"/>
+    <circle cx="195" cy="169" r="4" fill="white"/>
 
     <!-- TRAIL DE LA PELOTA -->
-    <path id="trail" d="" fill="none" stroke="rgba(220,240,0,0.65)" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="4 3"/>
+    <path id="trail" d="" fill="none" stroke="rgba(220,240,0,0.55)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5,4"/>
 
-    <!-- ─── JUGADORAS ─── -->
-    <!-- SAKURA (S) — izquierda. Jugadora amarilla -->
+    <!-- ─── JUGADORAS (solo etiqueta, sin círculo) ─── -->
+    <!-- SAKURA — izquierda, amarillo -->
     <g id="player-s-grp">
-      <!-- Sombra del jugador -->
-      <ellipse id="ps-shadow" cx="50" cy="82" rx="10" ry="4" fill="rgba(0,0,0,0.25)"/>
-      <!-- Cuerpo -->
-      <circle id="ps-body" cx="50" cy="80" r="10" fill="#f5c518" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/>
-      <text id="ps-txt" x="50" y="84" text-anchor="middle" fill="#000" font-family="'Roboto Condensed',sans-serif" font-size="9" font-weight="900">S</text>
-      <!-- Etiqueta nombre — sobre la jugadora -->
-      <rect id="ps-lbl-bg" x="20" y="61" width="60" height="15" rx="3" fill="rgba(245,197,24,0.92)" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
-      <text id="ps-lbl" x="50" y="72" text-anchor="middle" fill="#000" font-family="'Roboto Condensed',sans-serif" font-size="8.5" font-weight="900">S. Watanabe</text>
+      <!-- Punto de posición -->
+      <circle id="ps-dot" cx="68" cy="91" r="5" fill="#f5c518" stroke="white" stroke-width="1.5"/>
+      <!-- Etiqueta nombre -->
+      <rect  id="ps-bg"  x="30" y="74" width="76" height="15" rx="3" fill="rgba(245,197,24,0.92)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+      <text  id="ps-lbl" x="68" y="85" text-anchor="middle" fill="#000" font-family="'Roboto Condensed',sans-serif" font-size="9" font-weight="900">S. WATANABE</text>
     </g>
 
-    <!-- RUBY (R) — derecha. Jugadora azul -->
+    <!-- RUBY — derecha, azul -->
     <g id="player-r-grp">
-      <!-- Sombra -->
-      <ellipse id="pr-shadow" cx="340" cy="82" rx="10" ry="4" fill="rgba(0,0,0,0.25)"/>
-      <!-- Cuerpo -->
-      <circle id="pr-body" cx="340" cy="80" r="10" fill="#5aa8cc" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/>
-      <text id="pr-txt" x="340" y="84" text-anchor="middle" fill="#fff" font-family="'Roboto Condensed',sans-serif" font-size="9" font-weight="900">R</text>
-      <!-- Etiqueta nombre — sobre la jugadora -->
-      <rect id="pr-lbl-bg" x="308" y="61" width="64" height="15" rx="3" fill="rgba(90,168,204,0.92)" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
-      <text id="pr-lbl" x="340" y="72" text-anchor="middle" fill="#fff" font-family="'Roboto Condensed',sans-serif" font-size="8.5" font-weight="900">R. Anderson</text>
+      <!-- Punto de posición -->
+      <circle id="pr-dot" cx="322" cy="91" r="5" fill="#5aa8cc" stroke="white" stroke-width="1.5"/>
+      <!-- Etiqueta nombre -->
+      <rect  id="pr-bg"  x="284" y="74" width="76" height="15" rx="3" fill="rgba(90,168,204,0.92)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+      <text  id="pr-lbl" x="322" y="85" text-anchor="middle" fill="#fff" font-family="'Roboto Condensed',sans-serif" font-size="9" font-weight="900">R. ANDERSON</text>
     </g>
 
-    <!-- PELOTA (se mueve con transform translate) -->
-    <g id="ball-group" transform="translate(50,80)">
-      <ellipse id="ball-shadow" cx="1" cy="5" rx="5" ry="2" fill="rgba(0,0,0,0.30)"/>
-      <circle id="ball-body" cx="0" cy="0" r="6" fill="url(#ballGrad)" filter="url(#ballGlow)"/>
+    <!-- PELOTA -->
+    <g id="ball-group" transform="translate(68,91)">
+      <ellipse cx="1" cy="6" rx="9" ry="3.5" fill="rgba(0,0,0,0.32)"/>
+      <circle cx="0" cy="0" r="9" fill="url(#ballGrad)" filter="url(#ballGlow)"/>
       <!-- Costuras -->
-      <path d="M-3.5,-5 C-6,-2,-6,2,-3.5,5" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.2" stroke-linecap="round"/>
-      <path d="M3.5,-5 C6,-2,6,2,3.5,5" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M-5,-7 C-9,-3,-9,3,-5,7" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" stroke-linecap="round" clip-path="url(#ballClip)"/>
+      <path d="M5,-7 C9,-3,9,3,5,7"   fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" stroke-linecap="round" clip-path="url(#ballClip)"/>
       <!-- Brillo -->
-      <ellipse cx="-2" cy="-2.5" rx="2.2" ry="1.4" fill="rgba(255,255,255,0.55)" transform="rotate(-20,-2,-2.5)"/>
+      <ellipse cx="-3" cy="-3.5" rx="3" ry="2" fill="rgba(255,255,255,0.55)" transform="rotate(-20,-3,-3.5)"/>
     </g>
   </svg>
 
-  <!-- Paneles de puntuación (desde los lados) -->
+  <!-- Paneles de puntuación — ambos a la vez -->
   <div class="map-score-overlay">
     <div class="map-panel-left" id="panel-s">
       <div class="map-big-score" id="big-s">0</div>
@@ -362,7 +355,7 @@ body {
       <div class="stat-player-lbl"><div class="stat-player-lbl-dot" style="background:var(--blue)"></div>🇮🇪 R. Anderson</div>
       <div style="display:flex;gap:20px;"><div class="stat-set-val">2</div><div class="stat-set-val">3</div></div>
     </div>
-    <div class="stat-grid" style="margin-top:8px;">
+    <div class="stat-grid" style="margin-top:12px;">
       <div class="stat-cell"><div class="stat-cell-val">6</div><div class="stat-bar-row"><div class="stat-bar-s" style="width:75%"></div></div><div class="stat-cell-lbl">Aces</div><div style="height:3px"></div><div class="stat-bar-row"><div class="stat-bar-r" style="width:12%"></div></div><div class="stat-cell-val r">1</div></div>
       <div class="stat-cell"><div class="stat-cell-val">78%</div><div class="stat-bar-row"><div class="stat-bar-s" style="width:78%"></div></div><div class="stat-cell-lbl">1er servicio</div><div style="height:3px"></div><div class="stat-bar-row"><div class="stat-bar-r" style="width:54%"></div></div><div class="stat-cell-val r">54%</div></div>
       <div class="stat-cell"><div class="stat-cell-val">85%</div><div class="stat-bar-row"><div class="stat-bar-s" style="width:85%"></div></div><div class="stat-cell-lbl">Pts 1er srv</div><div style="height:3px"></div><div class="stat-bar-row"><div class="stat-bar-r" style="width:61%"></div></div><div class="stat-cell-val r">61%</div></div>
@@ -392,89 +385,68 @@ body {
 </div>
 
 <script>
-/*
-  COORDENADAS — PISTA HORIZONTAL (vista cenital)
-  ================================================
-  viewBox: 0 0 390 160
-  Red: x=195 (línea vertical central)
-  Sakura (S) — izquierda:  x≈50,  y=80
-  Ruby   (R) — derecha:    x≈340, y=80
-  La pelota viaja de izq a der (S→R) y de der a izq (R→S)
-  El arco es vertical (Y sube = bola en el aire)
-*/
-
-const S_BASE = { x: 50,  y: 80 };
-const R_BASE = { x: 340, y: 80 };
-const NET_X  = 195;
+// ─── POSICIONES ──────────────────────────────────────────
+// viewBox 0 0 390 182 — pista horizontal vista cenital
+// Sakura (S) IZQUIERDA: x=68, Ruby (R) DERECHA: x=322, Red: x=195
+const S_X   = 68;
+const R_X   = 322;
+const NET_X = 195;
+const BASE_Y = 91;
 
 const ballGrp = document.getElementById('ball-group');
 const trailEl = document.getElementById('trail');
 
-// Elementos jugadoras
-const psBody   = document.getElementById('ps-body');
-const psTxt    = document.getElementById('ps-txt');
-const psShadow = document.getElementById('ps-shadow');
-const psLblBg  = document.getElementById('ps-lbl-bg');
-const psLbl    = document.getElementById('ps-lbl');
-const prBody   = document.getElementById('pr-body');
-const prTxt    = document.getElementById('pr-txt');
-const prShadow = document.getElementById('pr-shadow');
-const prLblBg  = document.getElementById('pr-lbl-bg');
-const prLbl    = document.getElementById('pr-lbl');
+// Refs jugadoras
+const psDot = document.getElementById('ps-dot');
+const psBg  = document.getElementById('ps-bg');
+const psLbl = document.getElementById('ps-lbl');
+const prDot = document.getElementById('pr-dot');
+const prBg  = document.getElementById('pr-bg');
+const prLbl = document.getElementById('pr-lbl');
 
 function placeBall(cx, cy) {
   ballGrp.setAttribute('transform', `translate(${cx},${cy})`);
 }
 
-function placePlayerRaw(side, cx, cy) {
-  if (side === 's') {
-    psBody.setAttribute('cx', cx);   psBody.setAttribute('cy', cy);
-    psTxt.setAttribute('x', cx);     psTxt.setAttribute('y', cy + 4);
-    psShadow.setAttribute('cx', cx + 1); psShadow.setAttribute('cy', cy + 5);
-    // etiqueta sobre la jugadora
-    psLblBg.setAttribute('x', cx - 30); psLblBg.setAttribute('y', cy - 19);
-    psLbl.setAttribute('x', cx);     psLbl.setAttribute('y', cy - 8);
-  } else {
-    prBody.setAttribute('cx', cx);   prBody.setAttribute('cy', cy);
-    prTxt.setAttribute('x', cx);     prTxt.setAttribute('y', cy + 4);
-    prShadow.setAttribute('cx', cx + 1); prShadow.setAttribute('cy', cy + 5);
-    prLblBg.setAttribute('x', cx - 32); prLblBg.setAttribute('y', cy - 19);
-    prLbl.setAttribute('x', cx);     prLbl.setAttribute('y', cy - 8);
-  }
+// Coloca jugadora (punto + etiqueta encima)
+function placePlayerRaw(side, x, y) {
+  const dot = side === 's' ? psDot : prDot;
+  const bg  = side === 's' ? psBg  : prBg;
+  const lbl = side === 's' ? psLbl : prLbl;
+  dot.setAttribute('cx', x); dot.setAttribute('cy', y);
+  // etiqueta centrada sobre la jugadora (15px arriba del punto)
+  bg.setAttribute('x',  x - 38); bg.setAttribute('y',  y - 17);
+  lbl.setAttribute('x', x);      lbl.setAttribute('y', y - 6);
 }
 
 function movePlayer(side, tx, ty, dur) {
-  const el  = side === 's' ? psBody : prBody;
-  const sx  = parseFloat(el.getAttribute('cx'));
-  const sy  = parseFloat(el.getAttribute('cy'));
-  const steps = 14; let i = 0;
+  const dot = side === 's' ? psDot : prDot;
+  const sx  = parseFloat(dot.getAttribute('cx'));
+  const sy  = parseFloat(dot.getAttribute('cy'));
+  const steps = 16; let i = 0;
   const iv = setInterval(() => {
     i++;
     const t  = i / steps;
-    const et = 1 - Math.pow(1 - t, 2);
+    const et = 1 - Math.pow(1 - t, 2); // ease-out
     placePlayerRaw(side, sx + (tx - sx) * et, sy + (ty - sy) * et);
     if (i >= steps) clearInterval(iv);
   }, dur / steps);
 }
 
-// ── ANIMACIÓN DE TIRO horizontal ──────────────────────────
-// La pelota va de (x1,y1) a (x2,y2). El arco sube en Y (bola por el aire).
+// ─── TIRO (Bezier cuadrático, arco natural) ─────────────
 function animShot(x1, y1, x2, y2, dur, cb) {
   const steps = 60; let i = 0;
-  const midX  = (x1 + x2) / 2;
   const dist  = Math.abs(x2 - x1);
-  // Arco: cuanto más largo el tiro, más alto sube (Y negativo = arriba en SVG)
-  const arcH  = 12 + (dist / 290) * 18 + Math.random() * 6;
-  // Control point desplazado ligeramente del centro para variedad
-  const cpX   = midX + (Math.random() - 0.5) * 30;
+  const arcH  = 18 + (dist / 390) * 20 + Math.random() * 5;
+  const cpX   = NET_X;
   const cpY   = Math.min(y1, y2) - arcH;
-
   trailEl.setAttribute('d', `M${x1},${y1} Q${cpX},${cpY} ${x2},${y2}`);
   placeBall(x1, y1);
 
   const iv = setInterval(() => {
     i++;
     const t  = i / steps;
+    // ease-in-out suave
     const e  = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2;
     const bx = (1-e)*(1-e)*x1 + 2*(1-e)*e*cpX + e*e*x2;
     const by = (1-e)*(1-e)*y1 + 2*(1-e)*e*cpY + e*e*y2;
@@ -488,87 +460,86 @@ function animShot(x1, y1, x2, y2, dur, cb) {
   }, dur / steps);
 }
 
-// ── SECUENCIA DE UN PUNTO ────────────────────────────────
-// shots: [{ from:'s'|'r', yFrom, yTo, dur }]
-// x viene de los bases (S_BASE.x o R_BASE.x)
-// yFrom/yTo permiten variación vertical del impacto
+// ─── PUNTO ───────────────────────────────────────────────
 function runPoint(shots, onEnd) {
   let si = 0;
-  const sh0 = shots[0];
-  placeBall(sh0.from === 's' ? S_BASE.x : R_BASE.x, sh0.yFrom ?? 80);
+  const first = shots[0];
+  const startX = first.from === 's' ? S_X : R_X;
+  placePlayerRaw(first.from, startX, first.yFrom ?? BASE_Y);
+  placeBall(startX, first.yFrom ?? BASE_Y);
 
   function next() {
     if (si >= shots.length) { onEnd(); return; }
-    const sh    = shots[si];
-    const fromX = sh.from === 's' ? S_BASE.x : R_BASE.x;
-    const toX   = sh.from === 's' ? R_BASE.x : S_BASE.x;
-    const toSide= sh.from === 's' ? 'r' : 's';
-    const fromY = sh.yFrom ?? 80;
-    const toY   = sh.yTo   ?? 80;
+    const sh     = shots[si];
+    const fromX  = sh.from === 's' ? S_X : R_X;
+    const toX    = sh.from === 's' ? R_X : S_X;
+    const toSide = sh.from === 's' ? 'r' : 's';
+    const yFrom  = sh.yFrom ?? BASE_Y;
+    const yTo    = sh.yTo   ?? BASE_Y;
 
-    movePlayer(toSide, toX, toY, sh.dur * 0.65);
+    placePlayerRaw(sh.from, fromX, yFrom);
+    movePlayer(toSide, toX, yTo, sh.dur * 0.65);
 
-    animShot(fromX, fromY, toX, toY, sh.dur, () => {
-      placePlayerRaw(toSide, toX, toY);
+    animShot(fromX, yFrom, toX, yTo, sh.dur, () => {
+      placePlayerRaw(toSide, toX, yTo);
       si++;
-      setTimeout(next, si >= shots.length ? 200 : 80);
+      setTimeout(next, si >= shots.length ? 280 : 150);
     });
   }
   next();
 }
 
-// ── PUNTOS ───────────────────────────────────────────────
-// yFrom/yTo: posición Y del impacto (varía de ~50 a ~110 para dar movimiento natural)
+// ─── PUNTOS ──────────────────────────────────────────────
 const pt1 = { score:{s:'15',r:'0'}, winner:'s',
-  shots:[{ from:'s', yFrom:80, yTo:75, dur:480 }] };
+  shots:[{ from:'s', yFrom:91, yTo:91, dur:780 }] };
 
 const pt2 = { score:{s:'30',r:'0'}, winner:'s', shots:[
-  { from:'s', yFrom:68, yTo:90, dur:540 },
-  { from:'r', yFrom:90, yTo:65, dur:510 },
-  { from:'s', yFrom:65, yTo:95, dur:580 }
+  { from:'s', yFrom:80, yTo:105, dur:900 },
+  { from:'r', yFrom:105, yTo:70, dur:860 },
+  { from:'s', yFrom:70,  yTo:110, dur:940 }
 ]};
 
 const pt3 = { score:{s:'30',r:'15'}, winner:'r', shots:[
-  { from:'s', yFrom:80, yTo:72, dur:530 },
-  { from:'r', yFrom:72, yTo:88, dur:500 },
-  { from:'s', yFrom:88, yTo:70, dur:560 },
-  { from:'r', yFrom:70, yTo:80, dur:620 }
+  { from:'s', yFrom:91, yTo:80,  dur:850 },
+  { from:'r', yFrom:80, yTo:100, dur:820 },
+  { from:'s', yFrom:100, yTo:75, dur:900 },
+  { from:'r', yFrom:75,  yTo:91, dur:1000 }
 ]};
 
 const pt4 = { score:{s:'30',r:'30'}, winner:'r', shots:[
-  { from:'s', yFrom:75, yTo:85, dur:520 },
-  { from:'r', yFrom:85, yTo:72, dur:490 },
-  { from:'s', yFrom:72, yTo:92, dur:550 },
-  { from:'r', yFrom:92, yTo:68, dur:530 },
-  { from:'s', yFrom:68, yTo:100, dur:600 }
+  { from:'s', yFrom:91,  yTo:95,  dur:830 },
+  { from:'r', yFrom:95,  yTo:85,  dur:810 },
+  { from:'s', yFrom:85,  yTo:100, dur:880 },
+  { from:'r', yFrom:100, yTo:70,  dur:860 },
+  { from:'s', yFrom:70,  yTo:105, dur:950 }
 ]};
 
 const pt5 = { score:{s:'30',r:'40'}, winner:'r',
-  shots:[{ from:'r', yFrom:80, yTo:78, dur:440 }] };
+  shots:[{ from:'r', yFrom:91, yTo:91, dur:720 }] };
 
 const pt6 = { score:{s:'40',r:'40'}, winner:'s', shots:[
-  { from:'r', yFrom:80, yTo:42, dur:420 },
-  { from:'r', yFrom:80, yTo:118, dur:420 }
+  { from:'r', yFrom:91, yTo:110, dur:680 },
+  { from:'r', yFrom:91, yTo:91,  dur:660 }
 ]};
 
 const pt7_shots = [
-  { from:'s', yFrom:78, yTo:82, dur:600 },
-  { from:'r', yFrom:82, yTo:70, dur:570 },
-  { from:'s', yFrom:70, yTo:90, dur:640 },
-  { from:'r', yFrom:90, yTo:72, dur:600 },
-  { from:'s', yFrom:72, yTo:95, dur:660 }
+  { from:'s', yFrom:91,  yTo:80,  dur:970 },
+  { from:'r', yFrom:80,  yTo:105, dur:920 },
+  { from:'s', yFrom:105, yTo:68,  dur:1000 },
+  { from:'r', yFrom:68,  yTo:100, dur:940 },
+  { from:'s', yFrom:100, yTo:115, dur:1040 }
 ];
 
 const pt8_shots = [
-  { from:'s', yFrom:80, yTo:76, dur:580 },
-  { from:'r', yFrom:76, yTo:84, dur:560 },
-  { from:'s', yFrom:84, yTo:70, dur:620 },
-  { from:'r', yFrom:70, yTo:88, dur:600 },
-  { from:'s', yFrom:88, yTo:66, dur:650 },
-  { from:'r', yFrom:66, yTo:94, dur:620 },
-  { from:'s', yFrom:94, yTo:76, dur:680 },
-  { from:'r', yFrom:76, yTo:80, dur:820 },
-  { from:'s', yFrom:80, yTo:82, dur:1050 }
+  { from:'s', yFrom:91,  yTo:85,  dur:950 },
+  { from:'r', yFrom:85,  yTo:100, dur:920 },
+  { from:'s', yFrom:100, yTo:72,  dur:1000 },
+  { from:'r', yFrom:72,  yTo:110, dur:960 },
+  { from:'s', yFrom:110, yTo:80,  dur:1040 },
+  { from:'r', yFrom:80,  yTo:96,  dur:950 },
+  { from:'s', yFrom:96,  yTo:89,  dur:1020 },
+  { from:'r', yFrom:89,  yTo:105, dur:1260 },
+  { from:'s', yFrom:105, yTo:78,  dur:1700 }
 ];
 
 const ALL_POINTS = [pt1, pt2, pt3, pt4, pt5, pt6];
@@ -578,11 +549,11 @@ let ptIdx = 0, mapSeqStarted = false, hideScoreTimer = null;
 function startSequence() {
   if (ptIdx >= ALL_POINTS.length) return;
   const pt = ALL_POINTS[ptIdx]; ptIdx++;
-  setStatus(ptIdx === 1 ? 'Watanabe sirve · Juego en curso' : 'Intercambio en curso…');
+  setStatus(ptIdx === 1 ? 'Watanabe sirve · Juego en curso' : 'Intercambio de fondo…');
   runPoint(pt.shots, () => {
     updateScore(pt.score.s, pt.score.r, pt.winner);
     if (ptIdx < ALL_POINTS.length) {
-      setTimeout(startSequence, 9000);
+      setTimeout(startSequence, 10000);
     } else {
       setTimeout(() => { if (!mapSeqStarted) { mapSeqStarted = true; runMapSeq(); } }, 2000);
     }
@@ -593,7 +564,7 @@ function updateScore(s, r, winner) {
   popScore('glb-s', s); popScore('glb-r', r);
   document.getElementById('dot-s').classList.toggle('on', winner === 's');
   document.getElementById('dot-r').classList.toggle('on', winner === 'r');
-  showBigScores(s, r, winner);
+  showBigScores(s, r); // AMBOS paneles a la vez, como v8
 }
 
 function popScore(id, val) {
@@ -604,18 +575,17 @@ function popScore(id, val) {
   el.classList.add('pop');
 }
 
-function showBigScores(s, r, winner) {
+function showBigScores(s, r) {
   document.getElementById('big-s').textContent = s;
   document.getElementById('big-r').textContent = r;
-  const ps = document.getElementById('panel-s');
-  const pr = document.getElementById('panel-r');
-  // Solo muestra el panel del ganador del punto
-  if (winner === 's') { ps.classList.add('show'); pr.classList.remove('show'); }
-  else                { pr.classList.add('show'); ps.classList.remove('show'); }
+  // Los dos paneles se abren a la vez
+  document.getElementById('panel-s').classList.add('show');
+  document.getElementById('panel-r').classList.add('show');
   if (hideScoreTimer) clearTimeout(hideScoreTimer);
   hideScoreTimer = setTimeout(() => {
-    ps.classList.remove('show'); pr.classList.remove('show');
-  }, 2800);
+    document.getElementById('panel-s').classList.remove('show');
+    document.getElementById('panel-r').classList.remove('show');
+  }, 2600);
 }
 
 function setStatus(txt, hl = false) {
@@ -630,14 +600,7 @@ function runMapSeq() {
     popScore('glb-s', '40'); popScore('glb-r', 'AD');
     document.getElementById('dot-r').classList.add('on');
     document.getElementById('dot-s').classList.remove('on');
-    document.getElementById('big-r').textContent = 'AD';
-    document.getElementById('big-s').textContent = '40';
-    document.getElementById('panel-r').classList.add('show');
-    document.getElementById('panel-s').classList.remove('show');
-    if (hideScoreTimer) clearTimeout(hideScoreTimer);
-    hideScoreTimer = setTimeout(() => {
-      document.getElementById('panel-r').classList.remove('show');
-    }, 2800);
+    showBigScores('40', 'AD');
     setStatus('🎾 ADVANTAGE ANDERSON', true);
     setTimeout(() => {
       setStatus('Punto de juego Anderson · Watanabe sirve…');
@@ -645,15 +608,12 @@ function runMapSeq() {
         setStatus('Rally decisivo…');
         runPoint(pt8_shots, () => {
           popScore('glb-s', 'J'); popScore('glb-r', 'R');
-          document.getElementById('big-r').textContent = 'JUEGO';
-          document.getElementById('big-s').textContent = '';
-          document.getElementById('panel-r').classList.add('show');
-          document.getElementById('panel-s').classList.remove('show');
+          showBigScores('JUEGO', 'RUBY');
           setStatus('🎾 ANDERSON GANA EL JUEGO', true);
-          setTimeout(() => { document.getElementById('result-overlay').classList.add('active'); }, 2800);
+          setTimeout(() => { document.getElementById('result-overlay').classList.add('active'); }, 2500);
         });
       }, 2200);
-    }, 2000);
+    }, 1900);
   });
 }
 
@@ -664,11 +624,10 @@ function switchTab(btn, tab) {
   document.getElementById('tab-stats').style.display = tab === 'stats' ? 'block' : 'none';
 }
 
-// Init
 window.addEventListener('DOMContentLoaded', () => {
-  placePlayerRaw('s', S_BASE.x, S_BASE.y);
-  placePlayerRaw('r', R_BASE.x, R_BASE.y);
-  placeBall(S_BASE.x, S_BASE.y);
+  placePlayerRaw('s', S_X, BASE_Y);
+  placePlayerRaw('r', R_X, BASE_Y);
+  placeBall(S_X, BASE_Y);
   setTimeout(startSequence, 1200);
 });
 </script>
