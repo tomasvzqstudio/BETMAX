@@ -26,7 +26,7 @@
   --red:         #d93030;
   --red-bright:  #ff2a2a;
   --blue:        #5aa8cc;
-  --green-gain:  #3dffa0;
+  --green-gain:  #4fd68a;
   --clay-out:    #9c3a1c;
 }
 
@@ -48,29 +48,27 @@ body {
 .logo { font-family:'Roboto Condensed',sans-serif; font-weight:900; font-size:30px; line-height:1; color:var(--yellow); letter-spacing:0.02em; }
 .logo span { color:var(--white); }
 .hdr-left { display:flex; align-items:center; gap:6px; text-decoration:none; margin-left:-6px; }
-.live-pill { display:flex; align-items:center; gap:8px; background:var(--red); padding:7px 13px; border-radius:5px; font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:900; letter-spacing:0.08em; line-height:1; box-shadow:0 0 0 0 rgba(217,48,48,0.6); animation:livePulse 1.6s infinite; }
+.live-pill { display:flex; align-items:center; gap:8px; background:var(--red); padding:6px 11px; border-radius:3px; font-family:'Roboto Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:0.04em; line-height:1; }
 .live-dot { width:10px; height:10px; background:#fff; border-radius:50%; animation:blink 1s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 @keyframes livePulse { 0%{box-shadow:0 0 0 0 rgba(217,48,48,0.55)} 70%{box-shadow:0 0 0 9px rgba(217,48,48,0)} 100%{box-shadow:0 0 0 0 rgba(217,48,48,0)} }
 
 /* ── BET CARD (compacta, legible de un vistazo) ── */
-.bet-card { position:relative; margin:16px 12px 10px; background:linear-gradient(135deg,#0a1f12 0%,#163020 100%); border:2px solid var(--yellow); border-radius:12px; padding:16px 14px 10px; flex-shrink:0; }
-.bc-tag { position:absolute; top:-11px; left:12px; background:var(--yellow); color:#000; font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:900; letter-spacing:0.08em; padding:3px 9px; border-radius:4px; line-height:1.1; }
-.bc-pick { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-.bc-pick-flag { width:36px; height:24px; border-radius:3px; flex-shrink:0; box-shadow:0 0 0 1px rgba(255,255,255,0.15); display:block; }
+.bet-card { margin:10px 12px 8px; background:#132a1c; border:1px solid #2b4a37; border-radius:6px; flex-shrink:0; overflow:hidden; }
+.bc-head { display:flex; justify-content:space-between; align-items:center; padding:7px 12px; background:#0f2216; border-bottom:1px solid #2b4a37; font-size:12px; color:var(--grey); }
+.bc-head b { color:var(--dim); font-weight:500; }
+.bc-pick { display:flex; align-items:center; gap:10px; padding:10px 12px 8px; }
+.bc-pick-flag { width:30px; height:20px; border-radius:2px; flex-shrink:0; display:block; }
 .bc-pick-main { flex:1; min-width:0; }
-.bc-pick-name { font-family:'Roboto Condensed',sans-serif; font-size:23px; font-weight:900; line-height:1.05; color:var(--white); }
-.bc-pick-market { font-family:'Roboto Condensed',sans-serif; font-size:15px; font-weight:700; color:var(--yellow); line-height:1.2; }
-.bc-odd { text-align:center; background:rgba(245,197,24,0.13); border:1px solid rgba(245,197,24,0.45); border-radius:6px; padding:4px 9px; flex-shrink:0; }
-.bc-odd-lbl { font-size:9px; letter-spacing:0.1em; color:var(--yellow); font-weight:700; text-transform:uppercase; }
-.bc-odd-val { font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:900; color:var(--yellow); line-height:1; }
-.bc-amounts { display:grid; grid-template-columns:1fr auto 1fr; align-items:end; background:rgba(0,0,0,0.35); border-radius:8px; padding:8px 14px 9px; }
-.bc-col-label { white-space:nowrap; font-size:11px; color:#b9c4bd; letter-spacing:0.03em; text-transform:uppercase; font-weight:700; margin-bottom:2px; }
+.bc-pick-name { font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:700; line-height:1.1; color:var(--white); }
+.bc-pick-market { font-size:13px; color:var(--dim); line-height:1.3; }
+.bc-odd-val { font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:700; color:var(--yellow); }
+.bc-amounts { display:flex; justify-content:space-between; padding:2px 12px 11px; }
+.bc-col-label { white-space:nowrap; font-size:12px; color:var(--grey); margin-bottom:1px; }
 .bc-col.right { text-align:right; }
-.bc-col-value { font-family:'Roboto Condensed',sans-serif; font-size:44px; font-weight:900; line-height:1; }
+.bc-col-value { font-family:'Roboto Condensed',sans-serif; font-size:40px; font-weight:700; line-height:1; }
 .bc-col-value.stake { color:var(--white); }
 .bc-col-value.gain  { color:var(--green-gain); }
-.bc-arrow { font-size:24px; color:var(--yellow); opacity:0.6; padding:0 8px 8px; }
 
 /* ── FRANJA BANDERAS (igual que v8, nombres completos) ── */
 .game-live-bar { background:#080f0a; border-bottom:1px solid rgba(245,197,24,0.25); padding:8px 12px 6px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; gap:8px; }
@@ -156,33 +154,31 @@ body {
 .stat-line-v { font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:900; min-width:64px; text-align:right; }
 
 /* ── PANTALLA FINAL — APUESTA PERDIDA ── */
-.result-overlay { display:none; position:fixed; inset:0; z-index:500; background:radial-gradient(ellipse at 50% 30%, #3a0808 0%, #120303 55%, #050101 100%); flex-direction:column; align-items:center; justify-content:center; padding:calc(env(safe-area-inset-top,0px) + 20px) 20px calc(env(safe-area-inset-bottom,0px) + 20px); }
-.result-overlay.active { display:flex; animation:fadeIn 0.35s ease both; }
+.result-overlay { display:none; position:fixed; inset:0; z-index:500; background:var(--green-dark); flex-direction:column; padding-bottom:env(safe-area-inset-bottom,0px); }
+.result-overlay.active { display:flex; animation:fadeIn 0.25s ease both; }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-.result-inner { width:100%; max-width:390px; text-align:center; }
-.result-icon { width:76px; height:76px; margin:0 auto 14px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; box-shadow:0 0 40px rgba(255,40,40,0.55); animation:pop 0.45s cubic-bezier(0.2,1.6,0.4,1) both; }
-@keyframes pop { from{transform:scale(0)} to{transform:scale(1)} }
-.result-title { font-family:'Roboto Condensed',sans-serif; font-size:40px; font-weight:900; letter-spacing:0.02em; color:#fff; line-height:1; margin-bottom:22px; }
-.result-amount { font-family:'Roboto Condensed',sans-serif; font-size:104px; font-weight:900; color:var(--red-bright); line-height:0.95; text-shadow:0 0 30px rgba(255,30,30,0.45); animation:shake 0.6s ease 0.35s both; }
-@keyframes shake { 0%,100%{transform:translateX(0)} 15%{transform:translateX(-12px)} 30%{transform:translateX(12px)} 45%{transform:translateX(-8px)} 60%{transform:translateX(8px)} 80%{transform:translateX(-4px)} }
-.result-amount-lbl { font-size:13px; color:#ff8080; margin-top:8px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; }
-.result-ticket { margin-top:26px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:12px; text-align:left; overflow:hidden; }
-.rt-row { display:flex; align-items:center; gap:12px; padding:12px 14px; }
-.rt-row + .rt-row { border-top:1px solid rgba(255,255,255,0.10); }
-.rt-flag { width:32px; height:21px; border-radius:3px; flex-shrink:0; display:block; }
-.rt-main { flex:1; min-width:0; }
-.rt-lbl { font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#9aa29d; font-weight:700; margin-bottom:2px; }
-.rt-text { font-family:'Roboto Condensed',sans-serif; font-size:19px; font-weight:700; color:#fff; line-height:1.15; }
-.rt-text.lost { color:#c9c9c9; text-decoration:line-through; text-decoration-color:var(--red-bright); text-decoration-thickness:2px; }
-.rt-badge { font-family:'Roboto Condensed',sans-serif; font-size:13px; font-weight:900; letter-spacing:0.06em; padding:4px 8px; border-radius:4px; flex-shrink:0; }
-.rt-badge.lost { background:var(--red); color:#fff; }
-.rt-badge.win  { background:var(--blue); color:#fff; }
-.rt-money { display:flex; justify-content:space-between; align-items:baseline; padding:12px 14px; border-top:1px solid rgba(255,255,255,0.10); font-family:'Roboto Condensed',sans-serif; }
-.rt-money-lbl { font-size:13px; color:#9aa29d; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; }
-.rt-money-val { font-size:22px; font-weight:900; }
-.rt-money-val s { color:#7d857f; text-decoration-color:var(--red-bright); text-decoration-thickness:2px; margin-right:8px; font-size:18px; }
-.rt-money-val b { color:#fff; }
-.result-btn { margin-top:22px; padding:12px 40px; background:transparent; border:1px solid rgba(255,255,255,0.25); border-radius:6px; color:#cfcfcf; font-family:'Roboto Condensed',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.05em; cursor:pointer; }
+.mb-head { background:#080f0a; padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px; display:flex; align-items:center; gap:10px; font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:700; border-bottom:1px solid var(--border); }
+.mb-tabs { display:flex; background:#080f0a; border-bottom:1px solid var(--border); }
+.mb-tabs span { flex:1; text-align:center; padding:10px 0; font-size:14px; color:var(--grey); border-bottom:2px solid transparent; }
+.mb-tabs span.on { color:#fff; border-bottom-color:var(--yellow); }
+.mb-card { margin:12px; background:#132a1c; border:1px solid #2b4a37; border-radius:6px; overflow:hidden; }
+.mb-top { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:#0f2216; border-bottom:1px solid #2b4a37; font-size:12px; color:var(--dim); }
+.mb-lost { background:var(--red); color:#fff; font-weight:700; font-size:12px; padding:3px 8px; border-radius:3px; }
+.mb-sel { display:flex; gap:10px; align-items:flex-start; padding:12px; }
+.mb-x { width:20px; height:20px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:3px; }
+.mb-main { flex:1; min-width:0; }
+.mb-name { font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:700; line-height:1.1; }
+.mb-mkt { font-size:13px; color:var(--dim); margin-top:2px; }
+.mb-ev { font-size:13px; color:var(--grey); margin-top:6px; }
+.mb-ev b { color:var(--dim); font-weight:500; }
+.mb-odd { font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:700; color:var(--yellow); }
+.mb-money { display:flex; justify-content:space-between; padding:10px 12px; border-top:1px solid #2b4a37; font-size:13px; color:var(--grey); }
+.mb-money b { display:block; font-family:'Roboto Condensed',sans-serif; font-size:20px; color:#fff; font-weight:700; margin-top:1px; }
+.mb-money .r { text-align:right; }
+.mb-total { padding:12px 12px 14px; border-top:1px solid #2b4a37; }
+.mb-total small { display:block; font-size:13px; color:var(--grey); margin-bottom:2px; }
+.mb-total b { white-space:nowrap; font-family:'Roboto Condensed',sans-serif; font-size:66px; line-height:1; font-weight:700; color:var(--red-bright); }
+.result-btn { display:block; margin:6px auto 0; padding:12px 40px; background:transparent; border:1px solid rgba(255,255,255,0.25); border-radius:6px; color:#cfcfcf; font-family:'Roboto Condensed',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.05em; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -203,27 +199,23 @@ body {
 
 <!-- BET CARD -->
 <div class="bet-card">
-  <div class="bc-tag">🎾 APUESTA ACTIVA</div>
+  <div class="bc-head"><b>Mis apuestas · Sencilla</b><span>En curso</span></div>
   <div class="bc-pick">
     <svg class="bc-pick-flag" viewBox="0 0 900 600"><use href="#flag-jp"/></svg>
     <div class="bc-pick-main">
       <div class="bc-pick-name">Sakura Watanabe</div>
-      <div class="bc-pick-market">gana este juego</div>
+      <div class="bc-pick-market">Ganador del juego · Set 2</div>
     </div>
-    <div class="bc-odd">
-      <div class="bc-odd-lbl">Cuota</div>
-      <div class="bc-odd-val">1.50</div>
-    </div>
+    <div class="bc-odd-val">1.50</div>
   </div>
   <div class="bc-amounts">
     <div class="bc-col">
-      <div class="bc-col-label">Apostado</div>
-      <div class="bc-col-value stake">140 €</div>
+      <div class="bc-col-label">Apuesta</div>
+      <div class="bc-col-value stake">140,00 €</div>
     </div>
-    <div class="bc-arrow">→</div>
     <div class="bc-col right">
-      <div class="bc-col-label">Ganancia potencial</div>
-      <div class="bc-col-value gain">210 €</div>
+      <div class="bc-col-label">Ganancias potenciales</div>
+      <div class="bc-col-value gain">210,00 €</div>
     </div>
   </div>
 </div>
@@ -374,39 +366,26 @@ body {
 
 <!-- PANTALLA FINAL -->
 <div class="result-overlay" id="result-overlay">
-  <div class="result-inner">
-    <div class="result-icon">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  <div class="mb-head"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>Mis apuestas</div>
+  <div class="mb-tabs"><span>Abiertas</span><span class="on">Liquidadas</span><span>Todas</span></div>
+  <div class="mb-card">
+    <div class="mb-top"><span>Sencilla · 140,00 €</span><span class="mb-lost">Perdida</span></div>
+    <div class="mb-sel">
+      <div class="mb-x"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+      <div class="mb-main">
+        <div class="mb-name">Sakura Watanabe</div>
+        <div class="mb-mkt">Ganador del juego · Set 2</div>
+        <div class="mb-ev">Sakura Watanabe v Ruby Anderson<br>Resultado: <b>Ruby Anderson gana el juego</b></div>
+      </div>
+      <div class="mb-odd">1.50</div>
     </div>
-    <div class="result-title">APUESTA PERDIDA</div>
-    <div class="result-amount">−140 €</div>
-    <div class="result-amount-lbl">Has perdido tu apuesta</div>
-
-    <div class="result-ticket">
-      <div class="rt-row">
-        <svg class="rt-flag" viewBox="0 0 900 600"><use href="#flag-jp"/></svg>
-        <div class="rt-main">
-          <div class="rt-lbl">Tu apuesta</div>
-          <div class="rt-text lost">Sakura Watanabe gana el juego</div>
-        </div>
-        <div class="rt-badge lost">FALLADA</div>
-      </div>
-      <div class="rt-row">
-        <svg class="rt-flag" viewBox="0 0 3 2" preserveAspectRatio="none"><use href="#flag-ie"/></svg>
-        <div class="rt-main">
-          <div class="rt-lbl">Resultado</div>
-          <div class="rt-text">Ruby Anderson gana el juego</div>
-        </div>
-        <div class="rt-badge win">GANA</div>
-      </div>
-      <div class="rt-money">
-        <span class="rt-money-lbl">Ganancia</span>
-        <span class="rt-money-val"><s>210 €</s><b>0 €</b></span>
-      </div>
+    <div class="mb-money">
+      <div>Apuesta<b>140,00 €</b></div>
+      <div class="r">Ganancias<b>0,00 €</b></div>
     </div>
-
-    <button class="result-btn" onclick="document.getElementById('result-overlay').classList.remove('active')">Cerrar</button>
+    <div class="mb-total"><small>Balance</small><b>−140,00 €</b></div>
   </div>
+  <button class="result-btn" onclick="document.getElementById('result-overlay').classList.remove('active')">Cerrar</button>
 </div>
 
 <script>
