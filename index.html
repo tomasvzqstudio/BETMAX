@@ -24,9 +24,7 @@
 }
 
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-
 html { height:100%; height:-webkit-fill-available; }
-
 body {
   min-height:100vh; min-height:-webkit-fill-available; min-height:100dvh;
   background:var(--green-dark); color:var(--white);
@@ -47,22 +45,22 @@ body {
 .live-dot { width:6px;height:6px;background:#fff;border-radius:50%;animation:blink 1s infinite; }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.15}}
 
-/* ── BET CARD ── */
+/* ── BET CARD — cifras más grandes ── */
 .bet-card { margin:8px 12px 6px; background:linear-gradient(135deg,#0a1f12 0%,#163020 100%); border:1.5px solid var(--yellow); border-radius:12px; padding:10px 14px; flex-shrink:0; }
-.bc-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:7px; }
+.bc-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
 .bc-label { font-size:10px; color:var(--yellow); font-weight:700; letter-spacing:0.09em; text-transform:uppercase; }
 .bc-odd-tag { background:rgba(245,197,24,0.15); border:1px solid rgba(245,197,24,0.4); border-radius:3px; padding:2px 7px; font-family:'Roboto Condensed',sans-serif; font-size:13px; font-weight:900; color:var(--yellow); }
-.bc-pick { display:flex; align-items:center; gap:8px; margin-bottom:9px; }
-.bc-pick-text { font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:900; color:var(--white); line-height:1.1; }
+.bc-pick { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.bc-pick-text { font-family:'Roboto Condensed',sans-serif; font-size:17px; font-weight:900; color:var(--white); line-height:1.1; }
 .bc-pick-text span { color:var(--yellow); font-size:13px; }
-.bc-amounts { display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,0.3); border-radius:8px; padding:9px 14px; }
-.bc-col { display:flex; flex-direction:column; gap:2px; }
+.bc-amounts { display:flex; align-items:center; justify-content:space-between; background:rgba(0,0,0,0.3); border-radius:8px; padding:10px 16px; }
+.bc-col { display:flex; flex-direction:column; gap:3px; }
 .bc-col.right { align-items:flex-end; }
-.bc-col-label { font-size:10px; color:var(--grey); letter-spacing:0.05em; text-transform:uppercase; }
-.bc-col-value { font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:900; line-height:1; }
+.bc-col-label { font-size:11px; color:var(--white-dim); letter-spacing:0.04em; text-transform:uppercase; font-weight:500; }
+.bc-col-value { font-family:'Roboto Condensed',sans-serif; font-size:38px; font-weight:900; line-height:1; }
 .bc-col-value.stake { color:var(--white); }
 .bc-col-value.gain  { color:var(--green-gain); }
-.bc-arrow { font-size:22px; color:var(--yellow); opacity:0.5; padding:0 6px; }
+.bc-arrow { font-size:24px; color:var(--yellow); opacity:0.5; padding:0 4px; }
 
 /* ── MARCADOR ── */
 .game-live-bar { background:#080f0a; border-bottom:1px solid rgba(245,197,24,0.25); padding:7px 12px 5px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; gap:8px; }
@@ -72,7 +70,7 @@ body {
 .glb-country { font-size:9px; color:var(--grey); letter-spacing:0.06em; text-transform:uppercase; font-weight:700; }
 .glb-info { display:flex; flex-direction:column; }
 .glb-info.right { align-items:flex-end; }
-.glb-name { font-family:'Roboto Condensed',sans-serif; font-size:13px; font-weight:700; color:var(--white-dim); }
+.glb-name { font-family:'Roboto Condensed',sans-serif; font-size:14px; font-weight:700; color:var(--white); }
 .glb-dot { width:6px; height:6px; border-radius:50%; margin-top:3px; opacity:0; transition:opacity 0.3s; }
 .glb-dot.on { opacity:1; }
 .glb-center { display:flex; flex-direction:column; align-items:center; gap:2px; flex-shrink:0; }
@@ -85,41 +83,30 @@ body {
 .glb-sep { font-family:'Roboto Condensed',sans-serif; font-size:22px; color:var(--border); }
 .glb-sub { font-size:9px; color:var(--grey); letter-spacing:0.07em; text-transform:uppercase; }
 
-/* ── MAPA 3D — ocupa el espacio restante ── */
-.map-center { position:relative; flex:1; min-height:0; overflow:hidden; background:#000; }
+/* ── MAPA — ocupa el espacio restante ── */
+.map-center { position:relative; flex:1; min-height:0; overflow:hidden; background:#1a5c2a; }
 #court-svg { width:100%; height:100%; display:block; }
 
-/* Overlay paneles de puntuación (desde los lados) */
+/* Paneles laterales de puntuación */
 .map-score-overlay { position:absolute; inset:0; pointer-events:none; z-index:10; overflow:hidden; }
 .map-panel-left {
   position:absolute; top:0; left:0; bottom:0; width:50%;
-  background:linear-gradient(90deg, rgba(160,35,0,0.90) 0%, rgba(190,55,0,0.72) 100%);
+  background:linear-gradient(90deg, rgba(160,35,0,0.92) 0%, rgba(190,55,0,0.75) 100%);
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
   transform:translateX(-100%); transition:transform 0.30s cubic-bezier(0.22,1,0.36,1);
 }
 .map-panel-left.show { transform:translateX(0); }
 .map-panel-right {
   position:absolute; top:0; right:0; bottom:0; width:50%;
-  background:linear-gradient(270deg, rgba(50,25,150,0.90) 0%, rgba(70,45,170,0.72) 100%);
+  background:linear-gradient(270deg, rgba(50,25,150,0.92) 0%, rgba(70,45,170,0.75) 100%);
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
   transform:translateX(100%); transition:transform 0.30s cubic-bezier(0.22,1,0.36,1);
 }
 .map-panel-right.show { transform:translateX(0); }
 .map-big-score { font-family:'Roboto Condensed',sans-serif; font-size:clamp(52px,13vw,72px); font-weight:900; color:var(--yellow); line-height:1; text-shadow:0 2px 16px rgba(0,0,0,0.9); }
-.map-player-name { font-family:'Roboto Condensed',sans-serif; font-size:11px; font-weight:700; color:rgba(255,255,255,0.92); text-shadow:0 1px 6px rgba(0,0,0,0.95); text-align:center; padding:0 8px; }
+.map-player-name { font-family:'Roboto Condensed',sans-serif; font-size:12px; font-weight:700; color:rgba(255,255,255,0.95); text-shadow:0 1px 6px rgba(0,0,0,0.95); text-align:center; padding:0 8px; }
 
-/* Overlay PUNTO (al ganar un punto — estilo Bet365) */
-.punto-overlay {
-  position:absolute; inset:0; z-index:20; pointer-events:none;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  background:rgba(80,30,150,0.78);
-  opacity:0; transition:opacity 0.2s;
-}
-.punto-overlay.show { opacity:1; }
-.punto-word { font-family:'Roboto Condensed',sans-serif; font-size:clamp(42px,12vw,60px); font-weight:900; color:var(--yellow); letter-spacing:0.04em; text-shadow:0 4px 24px rgba(0,0,0,0.8); line-height:1; }
-.punto-player { font-family:'Roboto Condensed',sans-serif; font-size:16px; font-weight:700; color:#fff; margin-top:6px; text-shadow:0 2px 8px rgba(0,0,0,0.7); }
-
-.map-bottom-status { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.68); padding:4px 10px; text-align:center; font-size:11px; color:rgba(255,255,255,0.78); font-style:italic; z-index:10; }
+.map-bottom-status { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.72); padding:4px 10px; text-align:center; font-size:11px; color:rgba(255,255,255,0.80); font-style:italic; z-index:10; }
 .map-bottom-status.hl { color:var(--yellow); font-weight:700; font-style:normal; }
 
 /* ── STATS ── */
@@ -190,7 +177,7 @@ body {
   </div>
 </div>
 
-<!-- MARCADOR con banderas SVG -->
+<!-- MARCADOR -->
 <div class="game-live-bar">
   <div class="glb-side">
     <div class="glb-flag-wrap">
@@ -222,151 +209,130 @@ body {
   </div>
 </div>
 
-<!-- MAPA 3D — perspectiva tipo Bet365 -->
+<!-- MAPA — pista horizontal vista cenital (como Bet365) -->
 <div class="map-center">
-  <svg id="court-svg" viewBox="0 0 390 240" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <svg id="court-svg" viewBox="0 0 390 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <!-- Gradiente de fondo pista -->
+      <!-- Superficie pista terracota (tierra batida, Roland Garros style) -->
       <linearGradient id="courtGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#8b3a00"/>
-        <stop offset="100%" stop-color="#d4540f"/>
+        <stop offset="0%" stop-color="#c44a10"/>
+        <stop offset="100%" stop-color="#a83808"/>
       </linearGradient>
-      <!-- Gradiente cielo de día -->
-      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#3a7fc1"/>
-        <stop offset="60%" stop-color="#6aaee8"/>
-        <stop offset="100%" stop-color="#a8d4f5"/>
+      <!-- Fondo exterior a la pista (zona de fondo) -->
+      <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#8c2800"/>
+        <stop offset="100%" stop-color="#7a2000"/>
       </linearGradient>
-      <!-- Pelota: gradiente radial verde-amarillo -->
-      <radialGradient id="ballGrad" cx="36%" cy="28%" r="62%">
-        <stop offset="0%" stop-color="#e8ff30"/>
-        <stop offset="50%" stop-color="#c2e800"/>
-        <stop offset="100%" stop-color="#7aaa00"/>
+      <!-- Pelota -->
+      <radialGradient id="ballGrad" cx="35%" cy="28%" r="65%">
+        <stop offset="0%" stop-color="#f0ff50"/>
+        <stop offset="50%" stop-color="#c8e800"/>
+        <stop offset="100%" stop-color="#88b800"/>
       </radialGradient>
-      <radialGradient id="ballShadeGrad" cx="50%" cy="50%" r="50%">
-        <stop offset="55%" stop-color="rgba(0,0,0,0)"/>
-        <stop offset="100%" stop-color="rgba(0,50,0,0.32)"/>
-      </radialGradient>
-      <!-- Filtro glow pelota -->
-      <filter id="ballGlow" x="-120%" y="-120%" width="340%" height="340%">
-        <feGaussianBlur stdDeviation="2" result="blur"/>
+      <filter id="ballGlow" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="1.8" result="blur"/>
         <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
-      <!-- Clip para costuras -->
-      <clipPath id="seamClip">
-        <circle id="seamClipCirc" cx="0" cy="0" r="9"/>
-      </clipPath>
     </defs>
 
-    <!-- FONDO CIELO + TRIBUNAS -->
-    <rect x="0" y="0" width="390" height="240" fill="url(#skyGrad)"/>
-    <!-- Nubes suaves -->
-    <ellipse cx="80"  cy="55" rx="38" ry="14" fill="rgba(255,255,255,0.55)"/>
-    <ellipse cx="130" cy="48" rx="28" ry="10" fill="rgba(255,255,255,0.45)"/>
-    <ellipse cx="270" cy="52" rx="42" ry="13" fill="rgba(255,255,255,0.50)"/>
-    <ellipse cx="330" cy="44" rx="30" ry="10" fill="rgba(255,255,255,0.40)"/>
-    <!-- Silueta tribunas de día -->
-    <polygon points="0,95 120,68 200,62 280,68 390,95 390,98 0,98" fill="rgba(180,160,130,0.75)"/>
+    <!-- FONDO: zona exterior a la pista -->
+    <rect x="0" y="0" width="390" height="160" fill="url(#bgGrad)"/>
 
-    <!-- ═══ PISTA EN PERSPECTIVA ═══
-         Vista desde detrás del jugador S (Sakura, fondo izq)
-         Punto de fuga arriba-centro
-         Las líneas convergen desde abajo hacia la red al fondo
-         Sakura (S) = fondo (arriba), pequeña
-         Ruby   (R) = primer plano (abajo), grande
-    -->
-    <!-- Superficie principal de la pista -->
-    <polygon id="courtSurface"
-      points="50,235 340,235 285,98 105,98"
-      fill="url(#courtGrad)"/>
+    <!-- SUPERFICIE DE LA PISTA (horizontal, ocupa casi todo el ancho) -->
+    <!-- La pista ocupa de x=14 a x=376, y de y=12 a y=148 -->
+    <rect x="14" y="12" width="362" height="136" fill="url(#courtGrad)" rx="1"/>
 
-    <!-- Sombras laterales (profundidad) -->
-    <polygon points="50,235 105,98 50,98" fill="rgba(0,0,0,0.25)"/>
-    <polygon points="340,235 285,98 340,98" fill="rgba(0,0,0,0.25)"/>
+    <!-- LÍNEAS DE LA PISTA (blancas, vista cenital) -->
+    <!-- Línea de fondo izquierda (S) -->
+    <line x1="14"  y1="12"  x2="14"  y2="148" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+    <!-- Línea de fondo derecha (R) -->
+    <line x1="376" y1="12"  x2="376" y2="148" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+    <!-- Línea lateral arriba -->
+    <line x1="14"  y1="12"  x2="376" y2="12"  stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+    <!-- Línea lateral abajo -->
+    <line x1="14"  y1="148" x2="376" y2="148" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
 
-    <!-- Líneas de fondo (abajo = primer plano, Ruby) -->
-    <line x1="50"  y1="235" x2="340" y2="235" stroke="rgba(255,255,255,0.65)" stroke-width="2.5"/>
-    <!-- Líneas de fondo (arriba = fondo, Sakura) — más finas por perspectiva -->
-    <line x1="105" y1="98"  x2="285" y2="98"  stroke="rgba(255,255,255,0.50)" stroke-width="1.2"/>
-    <!-- Líneas laterales -->
-    <line x1="50"  y1="235" x2="105" y2="98"  stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
-    <line x1="340" y1="235" x2="285" y2="98"  stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+    <!-- Líneas de singles (más estrechas, interiores) -->
+    <line x1="14"  y1="30"  x2="376" y2="30"  stroke="rgba(255,255,255,0.60)" stroke-width="1.2"/>
+    <line x1="14"  y1="130" x2="376" y2="130" stroke="rgba(255,255,255,0.60)" stroke-width="1.2"/>
 
-    <!-- Líneas de servicio laterales (perspectiva) -->
-    <!-- Linea lateral de singles izq -->
-    <line x1="90"  y1="235" x2="135" y2="98"  stroke="rgba(255,255,255,0.38)" stroke-width="1"/>
-    <!-- Linea lateral de singles der -->
-    <line x1="300" y1="235" x2="255" y2="98"  stroke="rgba(255,255,255,0.38)" stroke-width="1"/>
+    <!-- Líneas de servicio (a ~1/3 de cada lado de la red) -->
+    <!-- Lado S: x≈14+108=122 -->
+    <line x1="122" y1="30"  x2="122" y2="130" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/>
+    <!-- Lado R: x≈376-108=268 -->
+    <line x1="268" y1="30"  x2="268" y2="130" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/>
 
-    <!-- Línea de servicio (en perspectiva, horizontal a media distancia) -->
-    <line x1="90" y1="178" x2="300" y2="178" stroke="rgba(255,255,255,0.42)" stroke-width="1.2"/>
-    <!-- Línea de servicio fondo -->
-    <line x1="135" y1="130" x2="255" y2="130" stroke="rgba(255,255,255,0.32)" stroke-width="0.9"/>
+    <!-- Centro vertical (línea de saque en T) -->
+    <line x1="122" y1="80"  x2="268" y2="80"  stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
+    <!-- Marca de centro en fondo S -->
+    <line x1="14"  y1="77"  x2="14"  y2="83"  stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
+    <!-- Marca de centro en fondo R -->
+    <line x1="376" y1="77"  x2="376" y2="83"  stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
 
-    <!-- Centro de pista vertical (T) -->
-    <line x1="195" y1="235" x2="195" y2="98"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
-
-    <!-- RED — elemento central en perspectiva -->
-    <!-- Poste izquierdo -->
-    <line x1="80" y1="155" x2="80" y2="168"  stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
-    <!-- Poste derecho -->
-    <line x1="310" y1="155" x2="310" y2="168" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
-    <!-- Cuerpo de la red (perspectiva: más alta en los extremos, ligeramente curva en el centro) -->
-    <!-- Línea superior de la red -->
-    <path d="M 80,155 Q 195,148 310,155" fill="none" stroke="rgba(255,255,255,0.82)" stroke-width="2"/>
-    <!-- Sombra/grosor red -->
-    <path d="M 80,157 Q 195,150 310,157" fill="none" stroke="rgba(0,0,0,0.30)" stroke-width="4"/>
-    <!-- Línea inferior de la red -->
-    <path d="M 80,168 Q 195,162 310,168" fill="none" stroke="rgba(255,255,255,0.40)" stroke-width="1"/>
-    <!-- Malla de la red (líneas verticales finas) -->
-    <line x1="103" y1="155" x2="103" y2="168" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-    <line x1="126" y1="154" x2="126" y2="167" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-    <line x1="149" y1="153" x2="149" y2="166" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-    <line x1="172" y1="152" x2="172" y2="165" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-    <line x1="195" y1="151" x2="195" y2="164" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-    <line x1="218" y1="152" x2="218" y2="165" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-    <line x1="241" y1="153" x2="241" y2="166" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-    <line x1="264" y1="154" x2="264" y2="167" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-    <line x1="287" y1="155" x2="287" y2="168" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
+    <!-- RED — línea central vertical gruesa -->
+    <!-- Poste arriba -->
+    <circle cx="195" cy="10" r="3.5" fill="rgba(255,255,255,0.80)"/>
+    <!-- Poste abajo -->
+    <circle cx="195" cy="150" r="3.5" fill="rgba(255,255,255,0.80)"/>
+    <!-- Sombra red -->
+    <line x1="195" y1="12" x2="195" y2="148" stroke="rgba(0,0,0,0.35)" stroke-width="6"/>
+    <!-- Red -->
+    <line x1="195" y1="12" x2="195" y2="148" stroke="rgba(255,255,255,0.90)" stroke-width="3"/>
+    <!-- Textura malla (líneas horizontales finas) -->
+    <line x1="193" y1="24"  x2="197" y2="24"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="36"  x2="197" y2="36"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="48"  x2="197" y2="48"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="60"  x2="197" y2="60"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="72"  x2="197" y2="72"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="84"  x2="197" y2="84"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="96"  x2="197" y2="96"  stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="108" x2="197" y2="108" stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="120" x2="197" y2="120" stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="132" x2="197" y2="132" stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
+    <line x1="193" y1="144" x2="197" y2="144" stroke="rgba(255,255,255,0.30)" stroke-width="0.8"/>
 
     <!-- TRAIL DE LA PELOTA -->
-    <path id="trail" d="" fill="none" stroke="rgba(210,230,0,0.55)" stroke-width="2.5" stroke-linecap="round"/>
+    <path id="trail" d="" fill="none" stroke="rgba(220,240,0,0.65)" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="4 3"/>
 
-    <!-- JUGADORA S (Sakura) — al fondo, pequeña — su posición Y fija ~115 -->
+    <!-- ─── JUGADORAS ─── -->
+    <!-- SAKURA (S) — izquierda. Jugadora amarilla -->
     <g id="player-s-grp">
-      <circle id="ps" cx="195" cy="115" r="7" fill="#f5c518" opacity="0.95"/>
-      <text id="pst" x="195" y="119" text-anchor="middle" fill="#000" font-family="'Roboto Condensed',sans-serif" font-size="7" font-weight="bold">S</text>
-      <!-- Label Sakura -->
-      <rect id="ps-lbl-bg" x="160" y="104" width="70" height="14" rx="3" fill="rgba(245,197,24,0.85)"/>
-      <text id="ps-lbl" x="195" y="114" text-anchor="middle" fill="#000" font-family="'Roboto Condensed',sans-serif" font-size="8" font-weight="bold">Sakura Watanabe</text>
-    </g>
-
-    <!-- JUGADORA R (Ruby) — primer plano, grande — Y fija ~210 -->
-    <g id="player-r-grp">
-      <circle id="pr" cx="195" cy="215" r="14" fill="#5aa8cc" opacity="0.95"/>
-      <text id="prt" x="195" y="220" text-anchor="middle" fill="#fff" font-family="'Roboto Condensed',sans-serif" font-size="11" font-weight="bold">R</text>
-      <!-- Label Ruby -->
-      <rect id="pr-lbl-bg" x="154" y="230" width="82" height="15" rx="3" fill="rgba(90,168,204,0.85)"/>
-      <text id="pr-lbl" x="195" y="241" text-anchor="middle" fill="#fff" font-family="'Roboto Condensed',sans-serif" font-size="8.5" font-weight="bold">Ruby Anderson</text>
-    </g>
-
-    <!-- PELOTA (grupo, centrado en 0,0, se mueve con transform) -->
-    <g id="ball-group" transform="translate(195,115)">
-      <!-- Sombra en la pista -->
-      <ellipse id="ball-shadow" cx="0" cy="0" rx="8" ry="2.5" fill="rgba(0,0,0,0.32)" transform="translate(0,12)"/>
+      <!-- Sombra del jugador -->
+      <ellipse id="ps-shadow" cx="50" cy="82" rx="10" ry="4" fill="rgba(0,0,0,0.25)"/>
       <!-- Cuerpo -->
-      <circle id="ball-body" cx="0" cy="0" r="7" fill="url(#ballGrad)" filter="url(#ballGlow)"/>
-      <circle cx="0" cy="0" r="7" fill="url(#ballShadeGrad)"/>
+      <circle id="ps-body" cx="50" cy="80" r="10" fill="#f5c518" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/>
+      <text id="ps-txt" x="50" y="84" text-anchor="middle" fill="#000" font-family="'Roboto Condensed',sans-serif" font-size="9" font-weight="900">S</text>
+      <!-- Etiqueta nombre — sobre la jugadora -->
+      <rect id="ps-lbl-bg" x="20" y="61" width="60" height="15" rx="3" fill="rgba(245,197,24,0.92)" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
+      <text id="ps-lbl" x="50" y="72" text-anchor="middle" fill="#000" font-family="'Roboto Condensed',sans-serif" font-size="8.5" font-weight="900">S. Watanabe</text>
+    </g>
+
+    <!-- RUBY (R) — derecha. Jugadora azul -->
+    <g id="player-r-grp">
+      <!-- Sombra -->
+      <ellipse id="pr-shadow" cx="340" cy="82" rx="10" ry="4" fill="rgba(0,0,0,0.25)"/>
+      <!-- Cuerpo -->
+      <circle id="pr-body" cx="340" cy="80" r="10" fill="#5aa8cc" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/>
+      <text id="pr-txt" x="340" y="84" text-anchor="middle" fill="#fff" font-family="'Roboto Condensed',sans-serif" font-size="9" font-weight="900">R</text>
+      <!-- Etiqueta nombre — sobre la jugadora -->
+      <rect id="pr-lbl-bg" x="308" y="61" width="64" height="15" rx="3" fill="rgba(90,168,204,0.92)" stroke="rgba(0,0,0,0.2)" stroke-width="0.5"/>
+      <text id="pr-lbl" x="340" y="72" text-anchor="middle" fill="#fff" font-family="'Roboto Condensed',sans-serif" font-size="8.5" font-weight="900">R. Anderson</text>
+    </g>
+
+    <!-- PELOTA (se mueve con transform translate) -->
+    <g id="ball-group" transform="translate(50,80)">
+      <ellipse id="ball-shadow" cx="1" cy="5" rx="5" ry="2" fill="rgba(0,0,0,0.30)"/>
+      <circle id="ball-body" cx="0" cy="0" r="6" fill="url(#ballGrad)" filter="url(#ballGlow)"/>
       <!-- Costuras -->
-      <path id="sl" d="M-4.7,-6.8 C-8,-3, -8,3, -4.7,6.8" fill="none" stroke="rgba(255,255,255,0.78)" stroke-width="1.4" stroke-linecap="round"/>
-      <path id="sr" d="M4.7,-6.8 C8,-3, 8,3, 4.7,6.8" fill="none" stroke="rgba(255,255,255,0.78)" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M-3.5,-5 C-6,-2,-6,2,-3.5,5" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M3.5,-5 C6,-2,6,2,3.5,5" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.2" stroke-linecap="round"/>
       <!-- Brillo -->
-      <ellipse cx="-2.5" cy="-3" rx="2.8" ry="1.7" fill="rgba(255,255,255,0.50)" transform="rotate(-18,-2.5,-3)"/>
+      <ellipse cx="-2" cy="-2.5" rx="2.2" ry="1.4" fill="rgba(255,255,255,0.55)" transform="rotate(-20,-2,-2.5)"/>
     </g>
   </svg>
 
-  <!-- Paneles de puntuación -->
-  <div class="map-score-overlay" id="score-overlay">
+  <!-- Paneles de puntuación (desde los lados) -->
+  <div class="map-score-overlay">
     <div class="map-panel-left" id="panel-s">
       <div class="map-big-score" id="big-s">0</div>
       <div class="map-player-name">Sakura Watanabe</div>
@@ -375,12 +341,6 @@ body {
       <div class="map-big-score" id="big-r">0</div>
       <div class="map-player-name">Ruby Anderson</div>
     </div>
-  </div>
-
-  <!-- Overlay PUNTO (estilo Bet365) -->
-  <div class="punto-overlay" id="punto-overlay">
-    <div class="punto-word">PUNTO</div>
-    <div class="punto-player" id="punto-player-name"></div>
   </div>
 
   <div class="map-bottom-status" id="map-status">Partido en juego · Watanabe sirve</div>
@@ -433,233 +393,187 @@ body {
 
 <script>
 /*
-  SISTEMA DE COORDENADAS — PERSPECTIVA 3D
-  ========================================
-  La pista en perspectiva va de Y=98 (fondo, Sakura) a Y=235 (primer plano, Ruby)
-  X va de ~50 (izq, primer plano) a ~340 (der, primer plano)
-
-  Sakura (S) está al FONDO:
-    posición base: x=195, y=115 (zona fondo, pequeña en pantalla)
-  Ruby (R) está en PRIMER PLANO:
-    posición base: x=195, y=210 (zona delantera, grande en pantalla)
-
-  La pelota viaja entre S y R:
-    - Cuando S golpea: parte de y≈115 hacia y≈210 (hacia la cámara = crece)
-    - Cuando R golpea: parte de y≈210 hacia y≈115 (alejándose = se encoge)
-
-  La trayectoria en perspectiva hace que la pelota suba visualmente al ir al fondo
-  y baje al venir hacia la cámara, igual que en Bet365.
-
-  IMPORTANTE: la pelota escala según Y — más pequeña al fondo, más grande al frente.
+  COORDENADAS — PISTA HORIZONTAL (vista cenital)
+  ================================================
+  viewBox: 0 0 390 160
+  Red: x=195 (línea vertical central)
+  Sakura (S) — izquierda:  x≈50,  y=80
+  Ruby   (R) — derecha:    x≈340, y=80
+  La pelota viaja de izq a der (S→R) y de der a izq (R→S)
+  El arco es vertical (Y sube = bola en el aire)
 */
 
-// Posiciones base en perspectiva
-const S_BASE = { x: 195, y: 115 }; // Sakura al fondo
-const R_BASE = { x: 195, y: 210 }; // Ruby al frente
-const NET_Y  = 160;                  // Y de la red
+const S_BASE = { x: 50,  y: 80 };
+const R_BASE = { x: 340, y: 80 };
+const NET_X  = 195;
 
-// Límites de movimiento horizontal (se estrechan al fondo por perspectiva)
-function xBoundsAtY(y) {
-  // Interpola entre ancho fondo (x 135..255) y primer plano (x 60..330)
-  const t = (y - 98) / (235 - 98); // 0=fondo, 1=frente
-  const xMin = 135 - t * 75; // 135 fondo → 60 frente
-  const xMax = 255 + t * 75; // 255 fondo → 330 frente
-  return { xMin, xMax };
-}
+const ballGrp = document.getElementById('ball-group');
+const trailEl = document.getElementById('trail');
 
-// Escala de la pelota según Y (perspectiva)
-function ballScale(y) {
-  const t = (y - 98) / (235 - 98); // 0=fondo, 1=frente
-  return 0.45 + t * 0.85; // 0.45 al fondo, 1.30 al frente
-}
-
-// Elemento SVG de la pelota
-const ballGrp    = document.getElementById('ball-group');
-const ballBody   = document.getElementById('ball-body');
-const ballShadow = document.getElementById('ball-shadow');
-const trailEl    = document.getElementById('trail');
-const psEl       = document.getElementById('ps');
-const pstEl      = document.getElementById('pst');
-const prEl       = document.getElementById('pr');
-const prtEl      = document.getElementById('prt');
-// Label elements
+// Elementos jugadoras
+const psBody   = document.getElementById('ps-body');
+const psTxt    = document.getElementById('ps-txt');
+const psShadow = document.getElementById('ps-shadow');
 const psLblBg  = document.getElementById('ps-lbl-bg');
 const psLbl    = document.getElementById('ps-lbl');
+const prBody   = document.getElementById('pr-body');
+const prTxt    = document.getElementById('pr-txt');
+const prShadow = document.getElementById('pr-shadow');
 const prLblBg  = document.getElementById('pr-lbl-bg');
 const prLbl    = document.getElementById('pr-lbl');
 
-// Mueve y escala la pelota a la posición (cx, cy) en perspectiva
 function placeBall(cx, cy) {
-  const s = ballScale(cy);
-  ballGrp.setAttribute('transform', `translate(${cx},${cy}) scale(${s})`);
-  // Sombra en la pista (ligeramente debajo)
-  const shY = (cy - S_BASE.y) / (R_BASE.y - S_BASE.y); // 0..1
-  const shadowOpa = 0.15 + 0.30 * shY;
-  ballShadow.setAttribute('transform', `translate(0,${10/s})`);
-  ballShadow.setAttribute('opacity', shadowOpa);
+  ballGrp.setAttribute('transform', `translate(${cx},${cy})`);
 }
 
-// Mueve jugador
-function placePlayer(side, x, y) {
+function placePlayerRaw(side, cx, cy) {
   if (side === 's') {
-    // Sakura al fondo — radio pequeño fijo
-    psEl.setAttribute('cx', x);  psEl.setAttribute('cy', y);
-    pstEl.setAttribute('x', x);  pstEl.setAttribute('y', y + 4);
-    psLblBg.setAttribute('x', x - 35); psLblBg.setAttribute('y', y - 16);
-    psLbl.setAttribute('x', x);   psLbl.setAttribute('y', y - 6);
+    psBody.setAttribute('cx', cx);   psBody.setAttribute('cy', cy);
+    psTxt.setAttribute('x', cx);     psTxt.setAttribute('y', cy + 4);
+    psShadow.setAttribute('cx', cx + 1); psShadow.setAttribute('cy', cy + 5);
+    // etiqueta sobre la jugadora
+    psLblBg.setAttribute('x', cx - 30); psLblBg.setAttribute('y', cy - 19);
+    psLbl.setAttribute('x', cx);     psLbl.setAttribute('y', cy - 8);
   } else {
-    // Ruby al frente — radio grande fijo
-    prEl.setAttribute('cx', x);  prEl.setAttribute('cy', y);
-    prtEl.setAttribute('x', x);  prtEl.setAttribute('y', y + 5);
-    prLblBg.setAttribute('x', x - 41); prLblBg.setAttribute('y', y + 15);
-    prLbl.setAttribute('x', x);  prLbl.setAttribute('y', y + 26);
+    prBody.setAttribute('cx', cx);   prBody.setAttribute('cy', cy);
+    prTxt.setAttribute('x', cx);     prTxt.setAttribute('y', cy + 4);
+    prShadow.setAttribute('cx', cx + 1); prShadow.setAttribute('cy', cy + 5);
+    prLblBg.setAttribute('x', cx - 32); prLblBg.setAttribute('y', cy - 19);
+    prLbl.setAttribute('x', cx);     prLbl.setAttribute('y', cy - 8);
   }
 }
 
 function movePlayer(side, tx, ty, dur) {
-  const el  = side === 's' ? psEl : prEl;
-  const txt = side === 's' ? pstEl : prtEl;
+  const el  = side === 's' ? psBody : prBody;
   const sx  = parseFloat(el.getAttribute('cx'));
   const sy  = parseFloat(el.getAttribute('cy'));
-  const steps = 16; let i = 0;
+  const steps = 14; let i = 0;
   const iv = setInterval(() => {
     i++;
     const t  = i / steps;
-    const et = 1 - Math.pow(1-t, 2); // ease-out
-    placePlayer(side, sx + (tx-sx)*et, sy + (ty-sy)*et);
+    const et = 1 - Math.pow(1 - t, 2);
+    placePlayerRaw(side, sx + (tx - sx) * et, sy + (ty - sy) * et);
     if (i >= steps) clearInterval(iv);
   }, dur / steps);
 }
 
-// ─── ANIMACIÓN DE TIRO EN PERSPECTIVA ───────────────────
-// La bola viaja de (x1,y1) a (x2,y2) en coordenadas perspectiva
-// En perspectiva, la bola sube visualmente al ir al fondo (Y decreciente)
-// y baja al venir al frente (Y creciente)
-// Añadimos altura extra (en Y negativo) en el punto medio para simular el arco
+// ── ANIMACIÓN DE TIRO horizontal ──────────────────────────
+// La pelota va de (x1,y1) a (x2,y2). El arco sube en Y (bola por el aire).
 function animShot(x1, y1, x2, y2, dur, cb) {
-  const steps = 60;
-  let i = 0;
-
-  // El punto de control es a media distancia en Y, con altura visual proporcional
-  const midY  = (y1 + y2) / 2;
+  const steps = 60; let i = 0;
   const midX  = (x1 + x2) / 2;
-  // El arco sube visualmente (Y negativo) — cuanto más largo el tiro, más alto
-  const dist  = Math.abs(y2 - y1);
-  const arcH  = 18 + dist * 0.28 + Math.random() * 8;
-  const cpX   = midX + (Math.random() - 0.5) * 20; // pequeña variación horizontal
-  const cpY   = midY - arcH;                          // sube visualmente
+  const dist  = Math.abs(x2 - x1);
+  // Arco: cuanto más largo el tiro, más alto sube (Y negativo = arriba en SVG)
+  const arcH  = 12 + (dist / 290) * 18 + Math.random() * 6;
+  // Control point desplazado ligeramente del centro para variedad
+  const cpX   = midX + (Math.random() - 0.5) * 30;
+  const cpY   = Math.min(y1, y2) - arcH;
 
-  // Trail: ruta bezier
   trailEl.setAttribute('d', `M${x1},${y1} Q${cpX},${cpY} ${x2},${y2}`);
   placeBall(x1, y1);
 
   const iv = setInterval(() => {
     i++;
     const t  = i / steps;
-    // ease-in-out suave
     const e  = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2;
     const bx = (1-e)*(1-e)*x1 + 2*(1-e)*e*cpX + e*e*x2;
     const by = (1-e)*(1-e)*y1 + 2*(1-e)*e*cpY + e*e*y2;
     placeBall(bx, by);
     if (i >= steps) {
       placeBall(x2, y2);
-      trailEl.setAttribute('d', ''); // borra trail al llegar
+      trailEl.setAttribute('d', '');
       clearInterval(iv);
       cb && cb();
     }
   }, dur / steps);
 }
 
-// ─── SECUENCIA DE UN PUNTO ───────────────────────────────
-// shot: { from:'s'|'r', xFrom, xTo, dur }
-// S está en y≈115, R está en y≈210
+// ── SECUENCIA DE UN PUNTO ────────────────────────────────
+// shots: [{ from:'s'|'r', yFrom, yTo, dur }]
+// x viene de los bases (S_BASE.x o R_BASE.x)
+// yFrom/yTo permiten variación vertical del impacto
 function runPoint(shots, onEnd) {
   let si = 0;
-  const first = shots[0];
-  const startPos = first.from === 's'
-    ? { x: first.xFrom ?? S_BASE.x, y: S_BASE.y }
-    : { x: first.xFrom ?? R_BASE.x, y: R_BASE.y };
-  placeBall(startPos.x, startPos.y);
+  const sh0 = shots[0];
+  placeBall(sh0.from === 's' ? S_BASE.x : R_BASE.x, sh0.yFrom ?? 80);
 
   function next() {
     if (si >= shots.length) { onEnd(); return; }
-    const sh = shots[si];
-    const fromY = sh.from === 's' ? S_BASE.y : R_BASE.y;
-    const toY   = sh.from === 's' ? R_BASE.y : S_BASE.y;
+    const sh    = shots[si];
+    const fromX = sh.from === 's' ? S_BASE.x : R_BASE.x;
+    const toX   = sh.from === 's' ? R_BASE.x : S_BASE.x;
     const toSide= sh.from === 's' ? 'r' : 's';
-    const fromX = sh.xFrom ?? (sh.from === 's' ? S_BASE.x : R_BASE.x);
-    const toX   = sh.xTo   ?? (sh.from === 's' ? R_BASE.x : S_BASE.x);
+    const fromY = sh.yFrom ?? 80;
+    const toY   = sh.yTo   ?? 80;
 
-    placePlayer(sh.from, fromX, fromY);
-    movePlayer(toSide, toX, toY, sh.dur * 0.72);
+    movePlayer(toSide, toX, toY, sh.dur * 0.65);
 
     animShot(fromX, fromY, toX, toY, sh.dur, () => {
-      placePlayer(toSide, toX, toY);
+      placePlayerRaw(toSide, toX, toY);
       si++;
-      setTimeout(next, si >= shots.length ? 250 : 100);
+      setTimeout(next, si >= shots.length ? 200 : 80);
     });
   }
   next();
 }
 
-// ─── PUNTOS (xFrom y xTo definen posición horizontal) ───
-// Variaciones naturales de X para cada golpe
+// ── PUNTOS ───────────────────────────────────────────────
+// yFrom/yTo: posición Y del impacto (varía de ~50 a ~110 para dar movimiento natural)
 const pt1 = { score:{s:'15',r:'0'}, winner:'s',
-  shots:[{ from:'s', xFrom:185, xTo:200, dur:480 }] };
+  shots:[{ from:'s', yFrom:80, yTo:75, dur:480 }] };
 
 const pt2 = { score:{s:'30',r:'0'}, winner:'s', shots:[
-  { from:'s', xFrom:175, xTo:220, dur:560 },
-  { from:'r', xFrom:220, xTo:155, dur:520 },
-  { from:'s', xFrom:155, xTo:240, dur:600 }
+  { from:'s', yFrom:68, yTo:90, dur:540 },
+  { from:'r', yFrom:90, yTo:65, dur:510 },
+  { from:'s', yFrom:65, yTo:95, dur:580 }
 ]};
 
 const pt3 = { score:{s:'30',r:'15'}, winner:'r', shots:[
-  { from:'s', xFrom:190, xTo:175, dur:540 },
-  { from:'r', xFrom:175, xTo:210, dur:510 },
-  { from:'s', xFrom:210, xTo:165, dur:580 },
-  { from:'r', xFrom:165, xTo:195, dur:650 }
+  { from:'s', yFrom:80, yTo:72, dur:530 },
+  { from:'r', yFrom:72, yTo:88, dur:500 },
+  { from:'s', yFrom:88, yTo:70, dur:560 },
+  { from:'r', yFrom:70, yTo:80, dur:620 }
 ]};
 
 const pt4 = { score:{s:'30',r:'30'}, winner:'r', shots:[
-  { from:'s', xFrom:195, xTo:205, dur:530 },
-  { from:'r', xFrom:205, xTo:180, dur:500 },
-  { from:'s', xFrom:180, xTo:225, dur:560 },
-  { from:'r', xFrom:225, xTo:160, dur:540 },
-  { from:'s', xFrom:160, xTo:245, dur:620 }
+  { from:'s', yFrom:75, yTo:85, dur:520 },
+  { from:'r', yFrom:85, yTo:72, dur:490 },
+  { from:'s', yFrom:72, yTo:92, dur:550 },
+  { from:'r', yFrom:92, yTo:68, dur:530 },
+  { from:'s', yFrom:68, yTo:100, dur:600 }
 ]};
 
 const pt5 = { score:{s:'30',r:'40'}, winner:'r',
-  shots:[{ from:'r', xFrom:200, xTo:190, dur:440 }] };
+  shots:[{ from:'r', yFrom:80, yTo:78, dur:440 }] };
 
 const pt6 = { score:{s:'40',r:'40'}, winner:'s', shots:[
-  { from:'r', xFrom:195, xTo:280, dur:420 },  // doble falta wide
-  { from:'r', xFrom:195, xTo:105, dur:410 }   // doble falta net (fuera)
+  { from:'r', yFrom:80, yTo:42, dur:420 },
+  { from:'r', yFrom:80, yTo:118, dur:420 }
 ]};
 
 const pt7_shots = [
-  { from:'s', xFrom:185, xTo:215, dur:620 },
-  { from:'r', xFrom:215, xTo:165, dur:580 },
-  { from:'s', xFrom:165, xTo:235, dur:650 },
-  { from:'r', xFrom:235, xTo:175, dur:600 },
-  { from:'s', xFrom:175, xTo:245, dur:680 }
+  { from:'s', yFrom:78, yTo:82, dur:600 },
+  { from:'r', yFrom:82, yTo:70, dur:570 },
+  { from:'s', yFrom:70, yTo:90, dur:640 },
+  { from:'r', yFrom:90, yTo:72, dur:600 },
+  { from:'s', yFrom:72, yTo:95, dur:660 }
 ];
 
 const pt8_shots = [
-  { from:'s', xFrom:185, xTo:200, dur:600 },
-  { from:'r', xFrom:200, xTo:175, dur:570 },
-  { from:'s', xFrom:175, xTo:220, dur:640 },
-  { from:'r', xFrom:220, xTo:185, dur:610 },
-  { from:'s', xFrom:185, xTo:160, dur:660 },
-  { from:'r', xFrom:160, xTo:210, dur:590 },
-  { from:'s', xFrom:210, xTo:195, dur:650 },
-  { from:'r', xFrom:195, xTo:200, dur:820 },
-  { from:'s', xFrom:200, xTo:180, dur:1100 }
+  { from:'s', yFrom:80, yTo:76, dur:580 },
+  { from:'r', yFrom:76, yTo:84, dur:560 },
+  { from:'s', yFrom:84, yTo:70, dur:620 },
+  { from:'r', yFrom:70, yTo:88, dur:600 },
+  { from:'s', yFrom:88, yTo:66, dur:650 },
+  { from:'r', yFrom:66, yTo:94, dur:620 },
+  { from:'s', yFrom:94, yTo:76, dur:680 },
+  { from:'r', yFrom:76, yTo:80, dur:820 },
+  { from:'s', yFrom:80, yTo:82, dur:1050 }
 ];
 
 const ALL_POINTS = [pt1, pt2, pt3, pt4, pt5, pt6];
 
-// ─── FLUJO ───────────────────────────────────────────────
-let ptIdx = 0, mapSeqStarted = false, hideScoreTimer = null, puntoTimer = null;
+let ptIdx = 0, mapSeqStarted = false, hideScoreTimer = null;
 
 function startSequence() {
   if (ptIdx >= ALL_POINTS.length) return;
@@ -668,7 +582,7 @@ function startSequence() {
   runPoint(pt.shots, () => {
     updateScore(pt.score.s, pt.score.r, pt.winner);
     if (ptIdx < ALL_POINTS.length) {
-      setTimeout(startSequence, 10000);
+      setTimeout(startSequence, 9000);
     } else {
       setTimeout(() => { if (!mapSeqStarted) { mapSeqStarted = true; runMapSeq(); } }, 2000);
     }
@@ -679,18 +593,7 @@ function updateScore(s, r, winner) {
   popScore('glb-s', s); popScore('glb-r', r);
   document.getElementById('dot-s').classList.toggle('on', winner === 's');
   document.getElementById('dot-r').classList.toggle('on', winner === 'r');
-  showBigScores(s, r);
-  // Overlay PUNTO estilo Bet365
-  const name = winner === 's' ? 'Sakura Watanabe' : 'Ruby Anderson';
-  showPunto(name);
-}
-
-function showPunto(name) {
-  const ov = document.getElementById('punto-overlay');
-  document.getElementById('punto-player-name').textContent = name;
-  ov.classList.add('show');
-  if (puntoTimer) clearTimeout(puntoTimer);
-  puntoTimer = setTimeout(() => ov.classList.remove('show'), 2200);
+  showBigScores(s, r, winner);
 }
 
 function popScore(id, val) {
@@ -701,16 +604,18 @@ function popScore(id, val) {
   el.classList.add('pop');
 }
 
-function showBigScores(s, r) {
+function showBigScores(s, r, winner) {
   document.getElementById('big-s').textContent = s;
   document.getElementById('big-r').textContent = r;
   const ps = document.getElementById('panel-s');
   const pr = document.getElementById('panel-r');
-  ps.classList.add('show'); pr.classList.add('show');
+  // Solo muestra el panel del ganador del punto
+  if (winner === 's') { ps.classList.add('show'); pr.classList.remove('show'); }
+  else                { pr.classList.add('show'); ps.classList.remove('show'); }
   if (hideScoreTimer) clearTimeout(hideScoreTimer);
   hideScoreTimer = setTimeout(() => {
     ps.classList.remove('show'); pr.classList.remove('show');
-  }, 2600);
+  }, 2800);
 }
 
 function setStatus(txt, hl = false) {
@@ -719,28 +624,36 @@ function setStatus(txt, hl = false) {
   el.className = 'map-bottom-status' + (hl ? ' hl' : '');
 }
 
-function setGameLive(s, r) { popScore('glb-s', s); popScore('glb-r', r); showBigScores(s, r); }
-
 function runMapSeq() {
   setStatus('Watanabe sirve · Intercambio en curso…');
   runPoint(pt7_shots, () => {
-    setGameLive('40', 'AD');
+    popScore('glb-s', '40'); popScore('glb-r', 'AD');
     document.getElementById('dot-r').classList.add('on');
     document.getElementById('dot-s').classList.remove('on');
-    showPunto('Ruby Anderson');
+    document.getElementById('big-r').textContent = 'AD';
+    document.getElementById('big-s').textContent = '40';
+    document.getElementById('panel-r').classList.add('show');
+    document.getElementById('panel-s').classList.remove('show');
+    if (hideScoreTimer) clearTimeout(hideScoreTimer);
+    hideScoreTimer = setTimeout(() => {
+      document.getElementById('panel-r').classList.remove('show');
+    }, 2800);
     setStatus('🎾 ADVANTAGE ANDERSON', true);
     setTimeout(() => {
       setStatus('Punto de juego Anderson · Watanabe sirve…');
       setTimeout(() => {
         setStatus('Rally decisivo…');
         runPoint(pt8_shots, () => {
-          setGameLive('JUEGO', 'RUBY');
-          showPunto('Ruby Anderson');
+          popScore('glb-s', 'J'); popScore('glb-r', 'R');
+          document.getElementById('big-r').textContent = 'JUEGO';
+          document.getElementById('big-s').textContent = '';
+          document.getElementById('panel-r').classList.add('show');
+          document.getElementById('panel-s').classList.remove('show');
           setStatus('🎾 ANDERSON GANA EL JUEGO', true);
-          setTimeout(() => { document.getElementById('result-overlay').classList.add('active'); }, 2600);
+          setTimeout(() => { document.getElementById('result-overlay').classList.add('active'); }, 2800);
         });
       }, 2200);
-    }, 1900);
+    }, 2000);
   });
 }
 
@@ -753,8 +666,8 @@ function switchTab(btn, tab) {
 
 // Init
 window.addEventListener('DOMContentLoaded', () => {
-  placePlayer('s', S_BASE.x, S_BASE.y);
-  placePlayer('r', R_BASE.x, R_BASE.y);
+  placePlayerRaw('s', S_BASE.x, S_BASE.y);
+  placePlayerRaw('r', R_BASE.x, R_BASE.y);
   placeBall(S_BASE.x, S_BASE.y);
   setTimeout(startSequence, 1200);
 });
